@@ -19,13 +19,6 @@
 - **Consultants Qualité**: Accompagnement multi-clients
 - **Managers**: Pilotage et reporting conformité
 
-## 🌐 URLs
-
-- **Développement Sandbox**: https://3000-inu5oi516qyeg3gg69swb-3844e1b6.sandbox.novita.ai
-- **GitHub**: (À configurer après push)
-- **Production Cloudflare Pages**: (À déployer)
-- **Téléchargement**: https://www.genspark.ai/api/files/s/rZrFmqKa (v3 - Complet)
-
 ## ✨ Fonctionnalités Complètes
 
 ### 🏠 Landing Page Professionnelle ⭐ NOUVEAU
