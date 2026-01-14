@@ -12,6 +12,12 @@ class UserBase(BaseModel):
     email: EmailStr
     username: str
     full_name: Optional[str] = None
+    company: Optional[str] = None
+    phone: Optional[str] = None
+    referral_source: Optional[str] = None
+    selected_service: Optional[str] = None
+    terms_accepted: bool = False
+    newsletter_accepted: bool = False
     is_active: bool = False
 
 class UserCreate(UserBase):

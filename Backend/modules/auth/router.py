@@ -42,15 +42,22 @@ async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: AsyncIOMotorDatabase = Depends(get_database)
 ):
+    print(f"DEBUG: Login attempt for user: {form_data.username}")
     try:
         user = await authenticate_user(db, form_data.username, form_data.password)
         if not user:
+             print("DEBUG: User not found or password incorrect")
              raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect username or password",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+        print("DEBUG: Login successful")
     except HTTPException as e:
+        print(f"DEBUG: Login failed with HTTPException: {e.detail}")
+        raise e
+    except Exception as e:
+        print(f"DEBUG: Unexpected error during login: {e}")
         raise e
 
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)

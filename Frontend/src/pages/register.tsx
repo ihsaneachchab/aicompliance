@@ -342,7 +342,11 @@ export function RegisterPage() {
                         fullName: data.fullName,
                         password: data.password,
                         company: data.company,
-                        selectedService: data.selectedService
+                        selectedService: data.selectedService,
+                        phone: data.phone,
+                        referral: data.referral,
+                        terms: data.terms,
+                        newsletter: data.newsletter
                     });
 
                     Utils.showNotification('Compte créé ! Vérifiez vos emails (et la console serveur) pour le lien.', 'success');

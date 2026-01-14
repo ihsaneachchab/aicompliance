@@ -50,9 +50,9 @@ const Utils = {
   showNotification: (message, type = 'info') => {
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${type === 'success' ? 'bg-green-500' :
-        type === 'error' ? 'bg-red-500' :
-          type === 'warning' ? 'bg-yellow-500' :
-            'bg-blue-500'
+      type === 'error' ? 'bg-red-500' :
+        type === 'warning' ? 'bg-yellow-500' :
+          'bg-blue-500'
       } text-white`;
     notification.textContent = message;
     document.body.appendChild(notification);
@@ -126,7 +126,13 @@ const Auth = {
           email: userData.email,
           username: userData.email, // Use email as username
           password: userData.password,
-          full_name: userData.fullName
+          full_name: userData.fullName,
+          company: userData.company,
+          phone: userData.phone,
+          referral_source: userData.referral,
+          selected_service: userData.selectedService,
+          terms_accepted: userData.terms === 'on',
+          newsletter_accepted: userData.newsletter === 'on'
         })
       });
 
