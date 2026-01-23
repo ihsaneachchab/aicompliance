@@ -167,34 +167,138 @@ const Auth = {
   }
 };
 
-// Gestion du Chat Bot
+// Gestion du Chat Bot avec API RAG
 const ChatBot = {
   conversations: [],
   currentConversation: null,
-
-  init: () => {
-    ChatBot.conversations = Utils.loadFromStorage('chatConversations') || [];
+  currentConvoId: null,
+  settings: {
+    model: 'llama-3.3-70b-versatile',
+    temperature: 0.2
   },
 
-  createConversation: () => {
-    const conversation = {
-      id: Utils.generateId(),
-      title: 'Nouvelle conversation',
-      messages: [],
-      createdAt: new Date().toISOString()
+  init: async () => {
+    // Charger les conversations depuis le backend
+    try {
+      await ChatBot.loadConversations();
+    } catch (error) {
+      console.error('Error loading conversations:', error);
+      // Fallback sur localStorage si l'API n'est pas disponible
+      ChatBot.conversations = Utils.loadFromStorage('chatConversations') || [];
+    }
+  },
+
+  getAuthHeaders: () => {
+    const token = localStorage.getItem('access_token');
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
     };
-    ChatBot.conversations.unshift(conversation);
-    ChatBot.currentConversation = conversation;
-    Utils.saveToStorage('chatConversations', ChatBot.conversations);
-    return conversation;
   },
 
-  sendMessage: async (message) => {
-    if (!ChatBot.currentConversation) {
-      ChatBot.createConversation();
+  createConversation: async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/chatbot/conversations`, {
+        method: 'POST',
+        headers: ChatBot.getAuthHeaders()
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create conversation');
+      }
+
+      const data = await response.json();
+      const convoId = data.convo_id;
+
+      const conversation = {
+        id: convoId,
+        convo_id: convoId,
+        title: 'Nouvelle conversation',
+        messages: [],
+        createdAt: new Date().toISOString()
+      };
+
+      ChatBot.conversations.unshift(conversation);
+      ChatBot.currentConversation = conversation;
+      ChatBot.currentConvoId = convoId;
+      Utils.saveToStorage('chatConversations', ChatBot.conversations);
+      return conversation;
+    } catch (error) {
+      console.error('Error creating conversation:', error);
+      // Fallback: créer une conversation locale
+      const conversation = {
+        id: Utils.generateId(),
+        title: 'Nouvelle conversation',
+        messages: [],
+        createdAt: new Date().toISOString()
+      };
+      ChatBot.conversations.unshift(conversation);
+      ChatBot.currentConversation = conversation;
+      Utils.saveToStorage('chatConversations', ChatBot.conversations);
+      return conversation;
+    }
+  },
+
+  loadConversations: async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/chatbot/conversations`, {
+        method: 'GET',
+        headers: ChatBot.getAuthHeaders()
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to load conversations');
+      }
+
+      const data = await response.json();
+      const convoIds = data.conversations || [];
+
+      // Charger l'historique pour chaque conversation
+      ChatBot.conversations = await Promise.all(
+        convoIds.map(async (convoId) => {
+          try {
+            const historyResponse = await fetch(
+              `${API_URL}/api/chatbot/conversations/${convoId}/history`,
+              { headers: ChatBot.getAuthHeaders() }
+            );
+            if (historyResponse.ok) {
+              const historyData = await historyResponse.json();
+              const messages = historyData.history || [];
+              return {
+                id: convoId,
+                convo_id: convoId,
+                title: messages.length > 0 ? messages[0].content.substring(0, 50) + '...' : 'Nouvelle conversation',
+                messages: messages,
+                createdAt: messages.length > 0 ? messages[0].timestamp : new Date().toISOString()
+              };
+            }
+          } catch (e) {
+            console.error(`Error loading history for ${convoId}:`, e);
+          }
+          return {
+            id: convoId,
+            convo_id: convoId,
+            title: 'Nouvelle conversation',
+            messages: [],
+            createdAt: new Date().toISOString()
+          };
+        })
+      );
+
+      Utils.saveToStorage('chatConversations', ChatBot.conversations);
+    } catch (error) {
+      console.error('Error loading conversations:', error);
+      ChatBot.conversations = Utils.loadFromStorage('chatConversations') || [];
+    }
+  },
+
+  sendMessage: async (message, model = null, temperature = null) => {
+    // Créer une conversation si nécessaire
+    if (!ChatBot.currentConversation || !ChatBot.currentConvoId) {
+      await ChatBot.createConversation();
     }
 
-    // Ajouter le message de l'utilisateur
+    // Ajouter le message de l'utilisateur localement
     const userMessage = {
       id: Utils.generateId(),
       role: 'user',
@@ -203,42 +307,93 @@ const ChatBot = {
     };
     ChatBot.currentConversation.messages.push(userMessage);
 
-    // Simuler une réponse du bot (en production, appeler une API)
-    const botResponse = await ChatBot.generateResponse(message);
-    const botMessage = {
-      id: Utils.generateId(),
-      role: 'assistant',
-      content: botResponse,
-      timestamp: new Date().toISOString()
-    };
-    ChatBot.currentConversation.messages.push(botMessage);
-
     // Mettre à jour le titre si c'est la première question
-    if (ChatBot.currentConversation.messages.length === 2) {
+    if (ChatBot.currentConversation.messages.length === 1) {
       ChatBot.currentConversation.title = message.substring(0, 50) + '...';
     }
 
-    Utils.saveToStorage('chatConversations', ChatBot.conversations);
-    return botMessage;
+    try {
+      // Envoyer la question à l'API RAG
+      const response = await fetch(
+        `${API_URL}/api/chatbot/conversations/${ChatBot.currentConvoId}/ask`,
+        {
+          method: 'POST',
+          headers: ChatBot.getAuthHeaders(),
+          body: JSON.stringify({
+            message: message,
+            settings: {
+              model: model || ChatBot.settings.model,
+              temperature: temperature !== null ? temperature : ChatBot.settings.temperature
+            }
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(errorData.detail || 'Failed to get response from chatbot');
+      }
+
+      const data = await response.json();
+      
+      // Créer le message du bot avec la réponse et les citations
+      const botMessage = {
+        id: Utils.generateId(),
+        role: 'assistant',
+        content: data.answer || 'Pas de réponse disponible',
+        citations: data.citations || [],
+        timestamp: new Date().toISOString()
+      };
+
+      ChatBot.currentConversation.messages.push(botMessage);
+      Utils.saveToStorage('chatConversations', ChatBot.conversations);
+      
+      return botMessage;
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      // Message d'erreur pour l'utilisateur
+      const errorMessage = {
+        id: Utils.generateId(),
+        role: 'assistant',
+        content: `❌ Erreur: ${error.message}. Veuillez vérifier que l'API du chatbot est démarrée.`,
+        timestamp: new Date().toISOString()
+      };
+      
+      ChatBot.currentConversation.messages.push(errorMessage);
+      Utils.saveToStorage('chatConversations', ChatBot.conversations);
+      
+      throw error;
+    }
   },
 
-  generateResponse: async (message) => {
-    // Simulation de réponse (en production, appeler GPT-4, Claude, etc.)
-    await new Promise(resolve => setTimeout(resolve, 1000));
+  loadConversationHistory: async (convoId) => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/chatbot/conversations/${convoId}/history`,
+        { headers: ChatBot.getAuthHeaders() }
+      );
 
-    const responses = {
-      'action corrective': 'Selon la norme ISO 9001:2015 § 10.2, une **action corrective** est une action visant à éliminer la cause d\'une non-conformité détectée et à empêcher qu\'elle ne se reproduise.\n\nEn revanche, une **action préventive** (concept revu dans ISO 9001:2015) est intégrée dans l\'approche par les risques et vise à empêcher l\'apparition de non-conformités potentielles.\n\n**Exemple dans l\'industrie alimentaire :**\n- Action corrective : Suite à la détection de contamination bactérienne, mise en place d\'un nouveau protocole de nettoyage\n- Action préventive : Analyse HACCP pour identifier les points critiques avant qu\'un problème ne survienne',
+      if (!response.ok) {
+        throw new Error('Failed to load conversation history');
+      }
 
-      'default': 'Je suis un assistant spécialisé en conformité ISO 9001:2015. Je peux vous aider à :\n\n✓ Comprendre les exigences des différentes clauses ISO\n✓ Répondre à vos questions sur les processus de conformité\n✓ Vous guider dans la mise en place de votre système de management de la qualité\n\nN\'hésitez pas à me poser une question spécifique sur les normes ISO !'
-    };
-
-    // Recherche de mots-clés dans le message
-    const lowerMessage = message.toLowerCase();
-    if (lowerMessage.includes('action') && lowerMessage.includes('corrective')) {
-      return responses['action corrective'];
+      const data = await response.json();
+      return data.history || [];
+    } catch (error) {
+      console.error('Error loading conversation history:', error);
+      return [];
     }
+  },
 
-    return responses['default'];
+  setConversation: (conversation) => {
+    ChatBot.currentConversation = conversation;
+    ChatBot.currentConvoId = conversation.convo_id || conversation.id;
+  },
+
+  updateSettings: (model, temperature) => {
+    ChatBot.settings.model = model;
+    ChatBot.settings.temperature = temperature;
   }
 };
 

@@ -258,8 +258,8 @@ export function ChatPage() {
           let isTyping = false;
 
           // Load conversations
-          function loadConversations() {
-            ChatBot.init();
+          async function loadConversations() {
+            await ChatBot.init();
             const list = document.getElementById('conversationList');
             
             if (ChatBot.conversations.length === 0) {
@@ -269,8 +269,8 @@ export function ChatPage() {
 
             list.innerHTML = ChatBot.conversations.map(conv => \`
               <div 
-                onclick="loadConversation('\${conv.id}')" 
-                class="p-3 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors \${ChatBot.currentConversation?.id === conv.id ? 'bg-blue-50 border-l-4 border-blue-500' : ''}"
+                onclick="loadConversation('\${conv.id || conv.convo_id}')" 
+                class="p-3 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors \${ChatBot.currentConversation?.id === conv.id || ChatBot.currentConversation?.convo_id === conv.convo_id ? 'bg-blue-50 border-l-4 border-blue-500' : ''}"
               >
                 <div class="text-sm font-medium text-gray-900 truncate">\${conv.title}</div>
                 <div class="text-xs text-gray-500">\${new Date(conv.createdAt).toLocaleDateString('fr-FR')}</div>
@@ -279,18 +279,23 @@ export function ChatPage() {
           }
 
           // Load a specific conversation
-          function loadConversation(id) {
-            const conv = ChatBot.conversations.find(c => c.id === id);
+          async function loadConversation(id) {
+            const conv = ChatBot.conversations.find(c => c.id === id || c.convo_id === id);
             if (conv) {
-              ChatBot.currentConversation = conv;
+              ChatBot.setConversation(conv);
+              // Charger l'historique depuis le backend si nécessaire
+              if (conv.convo_id && conv.messages.length === 0) {
+                const history = await ChatBot.loadConversationHistory(conv.convo_id);
+                conv.messages = history;
+              }
               renderMessages();
               loadConversations();
             }
           }
 
           // Create new conversation
-          function createNewConversation() {
-            ChatBot.createConversation();
+          async function createNewConversation() {
+            await ChatBot.createConversation();
             renderMessages();
             loadConversations();
           }
@@ -329,6 +334,21 @@ export function ChatPage() {
                   </div>
                 \`;
               } else {
+                // Afficher les citations si disponibles
+                const citationsHtml = msg.citations && msg.citations.length > 0 ? \`
+                  <div class="mt-3 pt-3 border-t border-gray-200">
+                    <p class="text-xs font-semibold text-gray-500 mb-2">📚 Sources :</p>
+                    <div class="space-y-2">
+                      \${msg.citations.map((citation, idx) => \`
+                        <div class="bg-gray-50 p-2 rounded text-xs">
+                          <p class="font-medium text-gray-700">\${citation.source || 'Document'}</p>
+                          <p class="text-gray-600 mt-1 italic">"\${citation.doc ? citation.doc.substring(0, 150) + '...' : ''}"</p>
+                        </div>
+                      \`).join('')}
+                    </div>
+                  </div>
+                \` : '';
+                
                 return \`
                   <div class="flex justify-start">
                     <div class="message-bubble message-bot max-w-2xl">
@@ -336,8 +356,9 @@ export function ChatPage() {
                         <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                           <i class="fas fa-robot text-white text-sm"></i>
                         </div>
-                        <div>
+                        <div class="flex-1">
                           <p class="text-sm whitespace-pre-wrap">\${msg.content}</p>
+                          \${citationsHtml}
                           <span class="text-xs text-gray-400 mt-2 block">\${Utils.formatDate(msg.timestamp)}</span>
                         </div>
                       </div>
@@ -381,7 +402,13 @@ export function ChatPage() {
 
             // Send message and get response
             try {
-              await ChatBot.sendMessage(message);
+              // Récupérer les paramètres du modèle depuis l'interface
+              const modelSelect = document.getElementById('modelSelect');
+              const temperatureSlider = document.getElementById('temperatureSlider');
+              const model = modelSelect ? modelSelect.value : null;
+              const temperature = temperatureSlider ? parseFloat(temperatureSlider.value) / 100 : null;
+              
+              await ChatBot.sendMessage(message, model, temperature);
               
               // Remove typing indicator
               const indicator = document.getElementById('typingIndicator');
@@ -392,7 +419,10 @@ export function ChatPage() {
               loadConversations();
             } catch (error) {
               console.error('Error sending message:', error);
-              Utils.showNotification('Erreur lors de l\'envoi du message', 'error');
+              // Remove typing indicator en cas d'erreur
+              const indicator = document.getElementById('typingIndicator');
+              if (indicator) indicator.remove();
+              Utils.showNotification('Erreur lors de l\'envoi du message: ' + error.message, 'error');
             } finally {
               isTyping = false;
             }

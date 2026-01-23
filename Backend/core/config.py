@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     USE_CREDENTIALS: bool = True
     VALIDATE_CERTS: bool = True
 
+    # Chatbot RAG API
+    CHATBOT_API_BASE_URL: str = "http://localhost:8000/api/v1"
+    CHATBOT_API_TIMEOUT: int = 60
+
     class Config:
         env_file = ".env"
 
