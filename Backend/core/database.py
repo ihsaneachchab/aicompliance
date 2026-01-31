@@ -8,22 +8,34 @@ db = Database()
 
 async def get_database():
     if not settings.DATABASE_NAME:
-         print("CRITICAL ERROR: DATABASE_NAME not set in settings!")
+        raise RuntimeError("DATABASE_NAME is not set in environment variables")
     return db.client[settings.DATABASE_NAME]
 
 async def connect_to_mongo():
     try:
         print(f"Connecting to MongoDB at {settings.MONGODB_URL}...")
-        # Add serverSelectionTimeoutMS to fail faster if no DB
-        db.client = AsyncIOMotorClient(settings.MONGODB_URL, serverSelectionTimeoutMS=5000)
-        
-        # Trigger a command to verify connection
-        await db.client.admin.command('ping')
-        print("Successfully connected to MongoDB!")
+
+        db.client = AsyncIOMotorClient(
+            settings.MONGODB_URL,
+            serverSelectionTimeoutMS=5000,
+            uuidRepresentation="standard"
+        )
+
+        # Verify connection
+        await db.client.admin.command("ping")
+
+        print("Successfully connected to MongoDB Atlas")
+
     except Exception as e:
-        print(f"ERROR: Could not connect to MongoDB. Error: {e}")
-        print("SUGGESTION: confirm that your local MongoDB server is running (usually on port 27017).")
+        print("MongoDB connection failed")
+        print(f"Error: {e}")
+        print("Checklist:")
+        print("- MongoDB Atlas cluster is running")
+        print("- IP is whitelisted (0.0.0.0/0)")
+        print("- Username/password are correct")
+        print("- Password is URL-encoded")
 
 async def close_mongo_connection():
-    db.client.close()
-    print("Closed MongoDB connection")
+    if db.client:
+        db.client.close()
+        print("MongoDB connection closed")

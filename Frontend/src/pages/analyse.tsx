@@ -4,152 +4,25 @@ export function AnalysePage() {
   return (
     <Layout currentPage="analyse">
       <div class="space-y-6">
-        {/* Page header */}
         <div>
           <h1 class="text-3xl font-bold text-gray-900 mb-2">Analyse de Documents</h1>
           <p class="text-gray-600">Uploadez et analysez vos documents pour vérifier leur conformité</p>
         </div>
 
-        {/* Analyses Récentes Section */}
         <div class="card">
           <h2 class="text-xl font-bold text-gray-900 mb-4">Analyses Récentes</h2>
-          
-          <div class="space-y-3 mb-6">
-            {/* Recent Analysis 1 */}
-            <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-              <div class="flex items-center space-x-4 flex-1">
-                <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
-                <div class="flex-1">
-                  <div class="font-medium text-gray-900">Manuel Qualité v3.2</div>
-                  <div class="text-sm text-gray-600">
-                    <i class="far fa-clock mr-1"></i>
-                    14/01/2025 · 
-                    <i class="fas fa-list-check ml-2 mr-1"></i>
-                    2 points à corriger
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <div class="px-4 py-2 bg-green-100 text-green-700 rounded-lg font-bold text-lg">
-                  92%
-                </div>
-                <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                  <i class="fas fa-check-circle mr-1"></i>
-                  Conforme
-                </span>
-                <button class="btn btn-secondary text-sm px-4 py-2">
-                  Voir Détails
-                </button>
-                <button class="text-gray-400 hover:text-blue-600">
-                  <i class="fas fa-download"></i>
-                </button>
-              </div>
-            </div>
-
-            {/* Recent Analysis 2 */}
-            <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-              <div class="flex items-center space-x-4 flex-1">
-                <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
-                <div class="flex-1">
-                  <div class="font-medium text-gray-900">Procédure Achats</div>
-                  <div class="text-sm text-gray-600">
-                    <i class="far fa-clock mr-1"></i>
-                    14/01/2025 · 
-                    <i class="fas fa-list-check ml-2 mr-1"></i>
-                    8 points à corriger
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <div class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg font-bold text-lg">
-                  75%
-                </div>
-                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full">
-                  <i class="fas fa-exclamation-triangle mr-1"></i>
-                  Attention
-                </span>
-                <button class="btn btn-secondary text-sm px-4 py-2">
-                  Voir Détails
-                </button>
-                <button class="text-gray-400 hover:text-blue-600">
-                  <i class="fas fa-download"></i>
-                </button>
-              </div>
-            </div>
-
-            {/* Recent Analysis 3 */}
-            <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-              <div class="flex items-center space-x-4 flex-1">
-                <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
-                <div class="flex-1">
-                  <div class="font-medium text-gray-900">Fiche de Poste Directeur</div>
-                  <div class="text-sm text-gray-600">
-                    <i class="far fa-clock mr-1"></i>
-                    13/01/2025 · 
-                    <i class="fas fa-list-check ml-2 mr-1"></i>
-                    15 points à corriger
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <div class="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-bold text-lg">
-                  58%
-                </div>
-                <span class="px-3 py-1 bg-red-100 text-red-800 text-sm font-medium rounded-full">
-                  <i class="fas fa-times-circle mr-1"></i>
-                  Non conforme
-                </span>
-                <button class="btn btn-secondary text-sm px-4 py-2">
-                  Voir Détails
-                </button>
-                <button class="text-gray-400 hover:text-blue-600">
-                  <i class="fas fa-download"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Statistics Summary */}
-          <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-            <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900 mb-1">247</div>
-              <div class="text-sm text-gray-600">Documents Analysés</div>
-              <div class="text-xs text-green-600 mt-1">
-                <i class="fas fa-arrow-up mr-1"></i>
-                +15 cette semaine
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-blue-600 mb-1">82%</div>
-              <div class="text-sm text-gray-600">Taux de Conformité Moyen</div>
-              <div class="text-xs text-green-600 mt-1">
-                <i class="fas fa-arrow-up mr-1"></i>
-                +2% vs mois dernier
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900 mb-1">2.3s</div>
-              <div class="text-sm text-gray-600">Temps d'Analyse Moyen</div>
-              <div class="text-xs text-gray-600 mt-1">
-                Par document
-              </div>
-            </div>
+          <div id="recentAnalysesList" class="space-y-3 mb-6">
+            <p class="text-gray-500 italic">Chargement des analyses...</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Upload and parameters */}
           <div class="lg:col-span-2 space-y-6">
-            {/* Upload area */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">1. Télécharger le document</h2>
-              
-              <div 
+              <div
                 id="dropZone"
                 class="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer"
-                ondragover="event.preventDefault(); event.currentTarget.classList.add('border-blue-500', 'bg-blue-50')"
-                ondragleave="event.currentTarget.classList.remove('border-blue-500', 'bg-blue-50')"
-                ondrop="handleDrop(event)"
                 onclick="document.getElementById('fileInput').click()"
               >
                 <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -158,25 +31,18 @@ export function AnalysePage() {
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Glissez-déposez votre document</h3>
                 <p class="text-sm text-gray-600 mb-4">ou cliquez pour parcourir</p>
                 <p class="text-xs text-gray-500">PDF, Word, Excel • Max 10 MB • Max 50 pages</p>
-                
-                <input 
-                  type="file" 
-                  id="fileInput" 
-                  class="hidden" 
-                  accept=".pdf,.doc,.docx,.xls,.xlsx"
-                  onchange="handleFileSelect(event)"
-                />
+                <input type="file" id="fileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx" onchange="handleFileSelect(event)" />
               </div>
 
-              <div id="selectedFile" class="hidden mt-4 p-4 bg-blue-50 rounded-lg">
+              <div id="selectedFileDisplay" class="hidden mt-4 p-4 bg-blue-50 rounded-lg">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-file-pdf text-white text-xl"></i>
+                      <i id="fileIcon" class="fas fa-file-pdf text-white text-xl"></i>
                     </div>
                     <div>
-                      <div class="font-medium text-gray-900" id="fileName"></div>
-                      <div class="text-sm text-gray-600" id="fileSize"></div>
+                      <div id="fileName" class="font-medium text-gray-900">Nom du fichier</div>
+                      <div id="fileSize" class="text-sm text-gray-600">Taille</div>
                     </div>
                   </div>
                   <button onclick="clearFile()" class="text-red-600 hover:text-red-700">
@@ -186,15 +52,11 @@ export function AnalysePage() {
               </div>
             </div>
 
-            {/* Analysis parameters */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">2. Paramètres d'analyse</h2>
-              
               <div class="space-y-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Type de document
-                  </label>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Type de document</label>
                   <select id="documentType" class="input-field">
                     <option value="">Sélectionnez un type</option>
                     <option value="procedure">Procédure</option>
@@ -203,11 +65,8 @@ export function AnalysePage() {
                     <option value="manuel">Manuel Qualité</option>
                   </select>
                 </div>
-
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Processus ISO concerné
-                  </label>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Processus ISO concerné</label>
                   <select id="processISO" class="input-field">
                     <option value="">Sélectionnez un processus</option>
                     <option value="4.4">§ 4.4 - Système de management</option>
@@ -219,98 +78,52 @@ export function AnalysePage() {
                     <option value="10.2">§ 10.2 - Non-conformité et actions correctives</option>
                   </select>
                 </div>
-
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Référence du document (optionnel)
-                  </label>
-                  <input 
-                    type="text" 
-                    id="docReference" 
-                    class="input-field" 
-                    placeholder="Ex: PROC-ACH-001"
-                  />
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Référence du document (optionnel)</label>
+                  <input type="text" id="docReference" class="input-field" placeholder="Ex: PROC-ACH-001" />
                 </div>
-
-                <button 
-                  onclick="startAnalysis()" 
-                  class="w-full btn btn-primary py-3 text-base font-semibold"
-                  id="analyzeButton"
-                >
-                  <i class="fas fa-search mr-2"></i>
-                  Lancer l'analyse
+                <button id="analyzeButton" onclick="startAnalysis()" class="w-full btn btn-primary py-3 text-base font-semibold">
+                  <i class="fas fa-search mr-2"></i>Lancer l'analyse
                 </button>
               </div>
             </div>
 
-            {/* Analysis results */}
             <div id="analysisResults" class="hidden card">
               <h2 class="text-xl font-bold text-gray-900 mb-6">Résultats de l'analyse</h2>
-              
-              {/* Score */}
               <div class="flex items-center justify-between mb-6 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl">
                 <div>
                   <div class="text-sm font-medium text-gray-600 mb-2">Score de Conformité</div>
-                  <div class="text-5xl font-bold text-blue-600" id="conformityScore">--</div>
-                  <div class="text-sm text-gray-600 mt-2" id="conformityStatus">--</div>
+                  <div id="resultScoreLarge" class="text-5xl font-bold text-blue-600">0/100</div>
+                  <div id="resultStatus" class="text-sm text-gray-600 mt-2">Status</div>
                 </div>
-                <div class="score-circle score-good" id="scoreCircle">
-                  <span id="scoreCircleText">--</span>
+                <div id="scoreCircle" class="score-circle">
+                  <span id="resultScorePercent">0%</span>
                 </div>
               </div>
-
-              {/* Breakdown */}
               <div class="grid grid-cols-3 gap-4 mb-6">
-                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
-                  <div class="flex items-center justify-between mb-2">
-                    <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                    <span class="text-2xl font-bold text-green-600" id="conformCount">0</span>
-                  </div>
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200 text-center">
+                  <div id="conformItems" class="text-2xl font-bold text-green-600">0</div>
                   <div class="text-sm font-medium text-gray-900">Conforme</div>
                 </div>
-
-                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-                  <div class="flex items-center justify-between mb-2">
-                    <i class="fas fa-exclamation-circle text-yellow-600 text-xl"></i>
-                    <span class="text-2xl font-bold text-yellow-600" id="warningCount">0</span>
-                  </div>
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200 text-center">
+                  <div id="warningItems" class="text-2xl font-bold text-yellow-600">0</div>
                   <div class="text-sm font-medium text-gray-900">Attention</div>
                 </div>
-
-                <div class="p-4 bg-red-50 rounded-lg border border-red-200">
-                  <div class="flex items-center justify-between mb-2">
-                    <i class="fas fa-times-circle text-red-600 text-xl"></i>
-                    <span class="text-2xl font-bold text-red-600" id="ncCount">0</span>
-                  </div>
+                <div class="p-4 bg-red-50 rounded-lg border border-red-200 text-center">
+                  <div id="nonConformItems" class="text-2xl font-bold text-red-600">0</div>
                   <div class="text-sm font-medium text-gray-900">Non-conforme</div>
                 </div>
               </div>
-
-              {/* Findings */}
-              <div>
+              <div class="space-y-3">
                 <h3 class="font-bold text-gray-900 mb-4">Détail des résultats</h3>
-                <div class="space-y-3" id="findingsList">
+                <div id="findingsContainer" class="space-y-3">
                   {/* Findings will be loaded here */}
                 </div>
-              </div>
-
-              {/* Actions */}
-              <div class="flex gap-3 mt-6">
-                <button onclick="downloadReport()" class="flex-1 btn btn-primary">
-                  <i class="fas fa-download mr-2"></i>
-                  Télécharger le rapport
-                </button>
-                <button onclick="exportPDF()" class="flex-1 btn btn-secondary">
-                  <i class="fas fa-file-pdf mr-2"></i>
-                  Exporter en PDF
-                </button>
               </div>
             </div>
           </div>
 
-          {/* Right sidebar - Info and tips */}
           <div class="space-y-6">
-            {/* Info card */}
             <div class="card bg-gradient-to-br from-blue-600 to-blue-700 text-white">
               <i class="fas fa-info-circle text-3xl mb-3"></i>
               <h3 class="font-bold mb-2">Comment ça marche ?</h3>
@@ -321,34 +134,6 @@ export function AnalysePage() {
                 <li>4. Consultez les résultats détaillés</li>
               </ol>
             </div>
-
-            {/* Tips */}
-            <div class="card">
-              <h3 class="font-bold text-gray-900 mb-4">
-                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
-                Conseils
-              </h3>
-              <ul class="text-sm space-y-3 text-gray-600">
-                <li class="flex items-start space-x-2">
-                  <i class="fas fa-check text-green-600 mt-1"></i>
-                  <span>Assurez-vous que le document est lisible</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <i class="fas fa-check text-green-600 mt-1"></i>
-                  <span>Sélectionnez le bon type de document</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <i class="fas fa-check text-green-600 mt-1"></i>
-                  <span>Les documents structurés sont mieux analysés</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <i class="fas fa-check text-green-600 mt-1"></i>
-                  <span>Vous pouvez ré-analyser après correction</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Statistics */}
             <div class="card">
               <h3 class="font-bold text-gray-900 mb-4">Statistiques</h3>
               <div class="space-y-3">
@@ -360,10 +145,6 @@ export function AnalysePage() {
                   <span class="text-sm text-gray-600">Score moyen</span>
                   <span class="font-bold text-blue-600">82%</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm text-gray-600">Temps moyen</span>
-                  <span class="font-bold text-gray-900">2m 15s</span>
-                </div>
               </div>
             </div>
           </div>
@@ -373,43 +154,96 @@ export function AnalysePage() {
       <script dangerouslySetInnerHTML={{
         __html: `
           let selectedFile = null;
+ 
+          async function loadHistory() {
+            try {
+              const response = await fetch('http://localhost:8000/api/conformity/history');
+              const data = await response.json();
+              displayHistory(data.history || []);
+            } catch (error) {
+              console.error('Erreur lors du chargement de l\\'historique:', error);
+              document.getElementById('recentAnalysesList').innerHTML = '<p class="text-red-500">Erreur de chargement</p>';
+            }
+          }
+
+          function displayHistory(history) {
+            const container = document.getElementById('recentAnalysesList');
+            if (history.length === 0) {
+              container.innerHTML = '<p class="text-gray-500 italic">Aucune analyse récente.</p>';
+              return;
+            }
+
+            container.innerHTML = history.map(item => {
+              const color = item.score >= 80 ? 'green' : item.score >= 50 ? 'yellow' : 'red';
+              const icon = item.score >= 80 ? 'fa-check-circle' : 'fa-exclamation-circle';
+              const date = new Date(item.analysis_date).toLocaleDateString('fr-FR');
+              
+              return '<div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">' +
+                '<div class="flex items-center space-x-4 flex-1">' +
+                  '<i class="fas fa-file-alt text-blue-600 text-2xl"></i>' +
+                  '<div class="flex-1">' +
+                    '<div class="font-medium text-gray-900">' + item.document_name + '</div>' +
+                    '<div class="text-sm text-gray-600">' +
+                      '<i class="far fa-clock mr-1"></i>' + date + ' · ' +
+                      '<i class="fas fa-list-check ml-2 mr-1"></i>' + item.non_conform_items + ' points à corriger' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="flex items-center space-x-4">' +
+                  '<div class="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg font-bold text-lg">' + item.score + '%</div>' +
+                  '<span class="px-3 py-1 bg-' + color + '-100 text-' + color + '-800 text-sm font-medium rounded-full">' +
+                    '<i class="fas ' + icon + ' mr-1"></i>' + item.status +
+                  '</span>' +
+                  '<button onclick="deleteAnalysis(\\'' + item._id + '\\')" class="p-2 text-gray-400 hover:text-red-600 transition-colors" title="Supprimer">' +
+                    '<i class="fas fa-trash"></i>' +
+                  '</button>' +
+                '</div>' +
+              '</div>';
+            }).join('');
+          }
+
+          async function deleteAnalysis(id) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cette analyse ?')) return;
+            
+            try {
+              const response = await fetch('http://localhost:8000/api/conformity/history/' + id, {
+                method: 'DELETE'
+              });
+              
+              if (response.ok) {
+                Utils.showNotification('Analyse supprimée', 'success');
+                loadHistory(); // Reload list
+              } else {
+                Utils.showNotification('Erreur lors de la suppression', 'error');
+              }
+            } catch (error) {
+              console.error('Delete error:', error);
+              Utils.showNotification('Erreur lors de la suppression', 'error');
+            }
+          }
 
           function handleFileSelect(event) {
             const file = event.target.files[0];
             if (file) {
-              displaySelectedFile(file);
+              selectedFile = file;
+              displaySelectedFile();
             }
           }
 
-          function handleDrop(event) {
-            event.preventDefault();
-            event.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
-            
-            const file = event.dataTransfer.files[0];
-            if (file) {
-              displaySelectedFile(file);
-            }
-          }
+          function displaySelectedFile() {
+            if (!selectedFile) return;
 
-          function displaySelectedFile(file) {
-            selectedFile = file;
+            document.getElementById('selectedFileDisplay').classList.remove('hidden');
+            document.getElementById('fileName').textContent = selectedFile.name;
+            document.getElementById('fileSize').textContent = formatFileSize(selectedFile.size);
             
-            document.getElementById('selectedFile').classList.remove('hidden');
-            document.getElementById('fileName').textContent = file.name;
-            document.getElementById('fileSize').textContent = formatFileSize(file.size);
-            
-            // Update icon based on file type
-            const icon = document.querySelector('#selectedFile .fa-file-pdf');
-            if (file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
-              icon.className = 'fas fa-file-word text-white text-xl';
-            } else if (file.name.endsWith('.xls') || file.name.endsWith('.xlsx')) {
-              icon.className = 'fas fa-file-excel text-white text-xl';
-            }
+            const icon = document.getElementById('fileIcon');
+            icon.className = 'fas ' + getFileIcon(selectedFile.name) + ' text-white text-xl';
           }
 
           function clearFile() {
             selectedFile = null;
-            document.getElementById('selectedFile').classList.add('hidden');
+            document.getElementById('selectedFileDisplay').classList.add('hidden');
             document.getElementById('fileInput').value = '';
           }
 
@@ -417,6 +251,12 @@ export function AnalysePage() {
             if (bytes < 1024) return bytes + ' B';
             if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
             return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+          }
+
+          function getFileIcon(fileName) {
+            if (fileName.endsWith('.doc') || fileName.endsWith('.docx')) return 'fa-file-word';
+            if (fileName.endsWith('.xls') || fileName.endsWith('.xlsx')) return 'fa-file-excel';
+            return 'fa-file-pdf';
           }
 
           async function startAnalysis() {
@@ -427,105 +267,96 @@ export function AnalysePage() {
 
             const documentType = document.getElementById('documentType').value;
             const processISO = document.getElementById('processISO').value;
+            const docReference = document.getElementById('docReference').value;
 
             if (!documentType || !processISO) {
               Utils.showNotification('Veuillez remplir tous les champs', 'warning');
               return;
             }
 
-            // Show loading
             const button = document.getElementById('analyzeButton');
             button.disabled = true;
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyse en cours...';
 
             try {
-              // Simulate analysis
               const result = await ComplianceAnalysis.analyzeDocument(selectedFile, {
                 documentType,
-                processISO
+                processISO,
+                docReference
               });
 
-              // Display results
               displayResults(result);
-              
-              Utils.showNotification('Analyse terminée avec succès', 'success');
+              loadHistory();
+              Utils.showNotification('Analyse terminée avec succès!', 'success');
             } catch (error) {
-              Utils.showNotification('Erreur lors de l\'analyse', 'error');
+              Utils.showNotification('Erreur lors de l\\'analyse: ' + error.message, 'error');
             } finally {
               button.disabled = false;
-              button.innerHTML = '<i class="fas fa-search mr-2"></i>Lancer l\'analyse';
+              button.innerHTML = '<i class="fas fa-search mr-2"></i>Lancer l\\'analyse';
             }
           }
 
           function displayResults(result) {
             document.getElementById('analysisResults').classList.remove('hidden');
+            document.getElementById('resultScoreLarge').textContent = result.score + '/100';
+            document.getElementById('resultStatus').textContent = result.status;
+            document.getElementById('resultScorePercent').textContent = result.score + '%';
             
-            // Score
-            document.getElementById('conformityScore').textContent = result.score + '/100';
-            document.getElementById('conformityStatus').textContent = result.status;
-            document.getElementById('scoreCircleText').textContent = result.score + '%';
+            document.getElementById('conformItems').textContent = result.conform_items || 0;
+            document.getElementById('warningItems').textContent = result.warning_items || 0;
+            document.getElementById('nonConformItems').textContent = result.non_conform_items || 0;
             
-            // Update score circle color
             const circle = document.getElementById('scoreCircle');
-            circle.className = 'score-circle ' + (
-              result.score >= 90 ? 'score-excellent' :
-              result.score >= 70 ? 'score-good' :
-              result.score >= 50 ? 'score-warning' : 'score-danger'
-            );
-
-            // Counts
-            document.getElementById('conformCount').textContent = result.conformItems;
-            document.getElementById('warningCount').textContent = result.warningItems;
-            document.getElementById('ncCount').textContent = result.nonConformItems;
-
-            // Findings
-            const findingsList = document.getElementById('findingsList');
-            findingsList.innerHTML = result.findings.map(finding => {
-              const colors = {
-                success: 'bg-green-50 border-green-200 text-green-900',
-                warning: 'bg-yellow-50 border-yellow-200 text-yellow-900',
-                danger: 'bg-red-50 border-red-200 text-red-900'
-              };
-
-              const icons = {
-                success: 'fa-check-circle text-green-600',
-                warning: 'fa-exclamation-circle text-yellow-600',
-                danger: 'fa-times-circle text-red-600'
-              };
-
-              return \`
-                <div class="p-4 border rounded-lg \${colors[finding.severity]}">
-                  <div class="flex items-start space-x-3">
-                    <i class="fas \${icons[finding.severity]} text-xl mt-1"></i>
-                    <div class="flex-1">
-                      <div class="font-medium mb-1">\${finding.title}</div>
-                      <div class="text-sm opacity-90 mb-2">\${finding.description}</div>
-                      <div class="text-xs opacity-75">
-                        <i class="fas fa-book mr-1"></i>
-                        \${finding.clause}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              \`;
-            }).join('');
-
-            // Scroll to results
+            circle.className = 'score-circle ' + (result.score >= 90 ? 'score-excellent' : result.score >= 70 ? 'score-good' : result.score >= 50 ? 'score-warning' : 'score-danger');
+            
+            const container = document.getElementById('findingsContainer');
+            container.innerHTML = '';
+            
+            if (result.findings && result.findings.length > 0) {
+              result.findings.forEach(finding => {
+                const findingEl = document.createElement('div');
+                const severityClass = finding.severity === 'success' ? 'bg-green-50 border-green-200 text-green-900' : 
+                                     finding.severity === 'warning' ? 'bg-yellow-50 border-yellow-200 text-yellow-900' : 
+                                     'bg-red-50 border-red-200 text-red-900';
+                const iconClass = finding.severity === 'success' ? 'fa-check-circle text-green-600' : 
+                                 finding.severity === 'warning' ? 'fa-exclamation-circle text-yellow-600' : 
+                                 'fa-times-circle text-red-600';
+                
+                findingEl.className = 'p-4 border rounded-lg ' + severityClass;
+                findingEl.innerHTML = '<div class="flex items-start space-x-3">' +
+                    '<i class="fas ' + iconClass + ' text-xl mt-1"></i>' +
+                    '<div class="flex-1">' +
+                      '<div class="font-medium mb-1">' + finding.title + '</div>' +
+                      '<div class="text-sm opacity-90 mb-2">' + finding.description + '</div>' +
+                      '<div class="text-xs opacity-75">' +
+                        '<i class="fas fa-book mr-1"></i>' + finding.clause +
+                      '</div>' +
+                    '</div>' +
+                  '</div>';
+                container.appendChild(findingEl);
+              });
+            } else {
+              container.innerHTML = '<p class="text-gray-500 italic">Aucun résultat détaillé disponible.</p>';
+            }
+            
             document.getElementById('analysisResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
 
-          function downloadReport() {
-            ComplianceAnalysis.downloadReport(AppState.analysisResults);
-          }
+          const dropZone = document.getElementById('dropZone');
+          dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-blue-500', 'bg-blue-50'); });
+          dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('border-blue-500', 'bg-blue-50'); });
+          dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            const file = e.dataTransfer.files[0];
+            if (file) { selectedFile = file; displaySelectedFile(); }
+          });
 
-          function exportPDF() {
-            Utils.showNotification('Export PDF en cours...', 'info');
-            setTimeout(() => {
-              Utils.showNotification('PDF exporté avec succès', 'success');
-            }, 1000);
-          }
+          document.addEventListener('DOMContentLoaded', loadHistory);
         `
       }} />
     </Layout>
   )
 }
+
+

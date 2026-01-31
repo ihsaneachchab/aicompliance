@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot ISO 9001 - Assistant Intelligent</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/chatbot.css?v=16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="chatbot-body">
+    <!-- Header -->
+    <header class="chatbot-header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="/dashboard" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Retour au tableau de bord</span>
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="logo-container">
+                    <i class="fas fa-robot"></i>
+                    <h1>Assistant ISO 9001</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="btn-icon" id="settingsBtn" title="Paramètres">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="chatbot-container">
+        <!-- Sidebar - Conversations -->
+        <aside class="conversations-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-comments"></i> Conversations</h2>
+                <button class="btn btn-primary btn-sm" id="newConversationBtn">
+                    <i class="fas fa-plus"></i> Nouvelle
+                </button>
+            </div>
+            <div class="conversations-list" id="conversationsList">
+                <!-- Conversations will be loaded here -->
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>Bienvenue sur votre Assistant ISO 9001</h2>
+                    <p>Créez une nouvelle conversation ou sélectionnez-en une existante pour commencer.</p>
+                    <button class="btn btn-primary btn-lg" id="welcomeNewConvoBtn">
+                        <i class="fas fa-plus"></i> Créer une conversation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="chat-interface" id="chatInterface" style="display: none;">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <h3 id="chatTitle">Conversation</h3>
+                        <span class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span id="statusText">En ligne</span>
+                        </span>
+                    </div>
+                    <div class="chat-header-actions">
+                        <button class="btn-icon" id="uploadBtn" title="Uploader un document">
+                            <i class="fas fa-upload"></i>
+                        </button>
+                        <button class="btn-icon" id="documentsBtn" title="Voir les documents">
+                            <i class="fas fa-file-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Area -->
+                <div class="messages-container" id="messagesContainer">
+                    <div class="messages-inner" id="messagesInner">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <form id="messageForm" class="message-form">
+                        <div class="input-wrapper">
+                            <textarea id="messageInput" placeholder="Posez votre question sur ISO 9001..." rows="1"
+                                maxlength="2000"></textarea>
+                            <div class="input-actions">
+                                <button type="button" class="btn-icon-small" id="attachBtn" title="Joindre un fichier">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <button type="submit" class="btn-send" id="sendBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="input-hint">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Entrée pour envoyer, Shift+Entrée pour nouvelle ligne</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - Documents & Settings -->
+        <aside class="right-sidebar" id="rightSidebar">
+            <!-- Documents Panel -->
+            <div class="panel documents-panel" id="documentsPanel" style="display: none;">
+                <div class="panel-header">
+                    <h3><i class="fas fa-file-alt"></i> Documents</h3>
+                    <button class="btn-icon-small" id="closeDocumentsBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="documents-tabs">
+                        <button class="tab-btn active" data-tab="conversation">Conversation</button>
+                        <button class="tab-btn" data-tab="global">Global</button>
+                    </div>
+                    <div class="documents-content">
+                        <div class="tab-content active" id="conversationDocs">
+                            <div class="upload-zone" id="uploadZoneConvo">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Glissez un fichier ici ou cliquez pour uploader</p>
+                                <input type="file" id="fileInputConvo" accept=".pdf,.txt,.doc,.docx" hidden>
+                            </div>
+                            <div class="documents-list" id="convoDocsList"></div>
+                        </div>
+                        <div class="tab-content" id="globalDocs">
+                            <div class="upload-zone" id="uploadZoneGlobal">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Glissez un fichier ici ou cliquez pour uploader</p>
+                                <input type="file" id="fileInputGlobal" accept=".pdf,.txt,.doc,.docx" hidden>
+                            </div>
+                            <div class="documents-list" id="globalDocsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="panel settings-panel" id="settingsPanel" style="display: none;">
+                <div class="panel-header">
+                    <h3><i class="fas fa-cog"></i> Paramètres</h3>
+                    <button class="btn-icon-small" id="closeSettingsBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="setting-group">
+                        <label for="modelSelect">Modèle LLM</label>
+                        <select id="modelSelect" class="input-field">
+                            <option value="llama-3.3-70b-versatile">Llama 3.3 70B (Recommandé)</option>
+                            <option value="llama-3.1-70b-versatile">Llama 3.1 70B</option>
+                            <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="temperatureSlider">
+                            Température: <span id="temperatureValue">0.2</span>
+                        </label>
+                        <input type="range" id="temperatureSlider" min="0" max="1" step="0.1" value="0.2"
+                            class="slider">
+                        <div class="slider-labels">
+                            <span>Précis</span>
+                            <span>Créatif</span>
+                        </div>
+                    </div>
+                    <div class="setting-info">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Une température basse (0.1-0.3) donne des réponses plus précises et factuelles. Une
+                            température élevée (0.7-1.0) donne des réponses plus créatives.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Chargement...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/chatbot.js"></script>
+</body>
+
+</html>

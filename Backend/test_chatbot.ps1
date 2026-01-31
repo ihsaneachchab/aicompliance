@@ -136,3 +136,6 @@ Write-Host "3. Connectez-vous avec: $EMAIL / $PASSWORD" -ForegroundColor White
 Write-Host "4. Allez dans 'Chat Bot' et testez!" -ForegroundColor White
 
 
+
+
+

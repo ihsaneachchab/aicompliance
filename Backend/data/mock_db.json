@@ -1,0 +1,679 @@
+{
+  "analysis_history": [
+    {
+      "user_id": null,
+      "document_name": "ENR_13 DEMANDE D_ACHATS LOCAUX.xlsx - Feuil1 form.pdf",
+      "document_type": "procedure",
+      "process_iso": "10.2",
+      "score": 0,
+      "status": "Non conforme",
+      "conform_items": 0,
+      "warning_items": 0,
+      "non_conform_items": 1,
+      "findings": [
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        }
+      ],
+      "analysis_date": "2026-01-30T20:41:19.978491",
+      "_id": "5"
+    },
+    {
+      "user_id": null,
+      "document_name": "PSM_DIR et PIL_01 Direction et Pilotage.docx (1).pdf",
+      "document_type": "procedure",
+      "process_iso": "10.2",
+      "score": 0,
+      "status": "Non conforme",
+      "conform_items": 0,
+      "warning_items": 0,
+      "non_conform_items": 2,
+      "findings": [
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        }
+      ],
+      "analysis_date": "2026-01-30T10:22:54.174482",
+      "_id": "4"
+    },
+    {
+      "user_id": null,
+      "document_name": "ENR_10 Fiche de controle des Articles  \u00e0 la r\u00e9ception.docx.pdf",
+      "document_type": "formulaire",
+      "process_iso": "10.2",
+      "score": 50,
+      "status": "Partiellement conforme",
+      "conform_items": 4,
+      "warning_items": 0,
+      "non_conform_items": 4,
+      "findings": [
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Pr\u00e9sence de champs de saisie pour les donn\u00e9es techniques (Quantit\u00e9 command\u00e9e, Quantit\u00e9 re\u00e7ue, Ecart, etc.)",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Pr\u00e9sence de champs de saisie pour les observations et constatations",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Pr\u00e9sence d'un champ pour la signature et la date du responsable",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Pr\u00e9sence d'un champ pour le statut final (Conforme, Non Conforme, NC Jug\u00e9 acceptable)",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Manque de champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter des champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+            "Ajouter des champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+            "Ajouter des champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+            "\u00c9tablir un lien explicite avec les objectifs et les politiques de l'organisation pour garantir l'alignement des actions correctives"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Manque de champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter des champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+            "Ajouter des champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+            "Ajouter des champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+            "\u00c9tablir un lien explicite avec les objectifs et les politiques de l'organisation pour garantir l'alignement des actions correctives"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Manque de champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter des champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+            "Ajouter des champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+            "Ajouter des champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+            "\u00c9tablir un lien explicite avec les objectifs et les politiques de l'organisation pour garantir l'alignement des actions correctives"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Manque de lien explicite avec les objectifs et les politiques de l'organisation",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter des champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+            "Ajouter des champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+            "Ajouter des champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+            "\u00c9tablir un lien explicite avec les objectifs et les politiques de l'organisation pour garantir l'alignement des actions correctives"
+          ]
+        }
+      ],
+      "analysis_date": "2026-01-30T09:19:36.197845",
+      "_id": "8"
+    },
+    {
+      "user_id": null,
+      "document_name": "CIP GESTION DE STOCK.docx.pdf",
+      "document_type": "procedure",
+      "process_iso": "10.2",
+      "score": 42,
+      "status": "Non conforme",
+      "conform_items": 39,
+      "warning_items": 0,
+      "non_conform_items": 53,
+      "findings": [
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section 1. Objet de processus d\u00e9finit l'objet du processus de gestion de stock et magasins et vente au comptoir",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section 4. D\u00e9finition et abr\u00e9viations d\u00e9finit les abr\u00e9viations utilis\u00e9es, notamment NC pour Non-conformit\u00e9",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document mentionne la proc\u00e9dure de gestion de stock et magasins et vente au comptoir (PRD_MAG_01) qui pourrait inclure des actions correctives",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne d\u00e9finit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Inclure une proc\u00e9dure pour l'analyse de la cause racine des non-conformit\u00e9s",
+            "Mettre en place un syst\u00e8me pour \u00e9valuer l'efficacit\u00e9 des actions correctives",
+            "Cr\u00e9er une proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Il n'y a pas d'information sur l'analyse de la cause racine des non-conformit\u00e9s",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Inclure une proc\u00e9dure pour l'analyse de la cause racine des non-conformit\u00e9s",
+            "Mettre en place un syst\u00e8me pour \u00e9valuer l'efficacit\u00e9 des actions correctives",
+            "Cr\u00e9er une proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne mentionne pas l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Inclure une proc\u00e9dure pour l'analyse de la cause racine des non-conformit\u00e9s",
+            "Mettre en place un syst\u00e8me pour \u00e9valuer l'efficacit\u00e9 des actions correctives",
+            "Cr\u00e9er une proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Il n'y a pas de proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Inclure une proc\u00e9dure pour l'analyse de la cause racine des non-conformit\u00e9s",
+            "Mettre en place un syst\u00e8me pour \u00e9valuer l'efficacit\u00e9 des actions correctives",
+            "Cr\u00e9er une proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section 6. Fiche de processus d\u00e9crit les objectifs, les indicateurs, les ressources et les donn\u00e9es d'entr\u00e9es et de sorties du processus de gestion de stock et magasin et vente au comptoir, ce qui r\u00e9pond partiellement aux exigences de la clause 10.2 de l'ISO 9001:2015.",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section 7. Proc\u00e9dures li\u00e9es au processus d\u00e9crit les proc\u00e9dures pour la gestion de stock et magasins et vente au comptoir, ce qui est une bonne pratique pour identifier et traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration.",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne d\u00e9crit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter une section d\u00e9di\u00e9e \u00e0 la description des processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration.",
+            "D\u00e9crire les proc\u00e9dures pour analyser la cause racine des non-conformit\u00e9s et mettre en \u0153uvre des actions correctives pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition.",
+            "Fournir des exemples concrets d'actions correctives mises en \u0153uvre pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition."
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne fournit pas d'informations sur l'analyse de la cause racine des non-conformit\u00e9s, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter une section d\u00e9di\u00e9e \u00e0 la description des processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration.",
+            "D\u00e9crire les proc\u00e9dures pour analyser la cause racine des non-conformit\u00e9s et mettre en \u0153uvre des actions correctives pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition.",
+            "Fournir des exemples concrets d'actions correctives mises en \u0153uvre pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition."
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne d\u00e9crit pas les actions correctives mises en \u0153uvre pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "Ajouter une section d\u00e9di\u00e9e \u00e0 la description des processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration.",
+            "D\u00e9crire les proc\u00e9dures pour analyser la cause racine des non-conformit\u00e9s et mettre en \u0153uvre des actions correctives pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition.",
+            "Fournir des exemples concrets d'actions correctives mises en \u0153uvre pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition."
+          ]
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section du document d\u00e9crit des processus pour traiter les demandes d'\u00e9chantillons et les ventes au comptoir, ce qui montre une certaine prise en compte de la gestion des non-conformit\u00e9s",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document mentionne la n\u00e9cessit\u00e9 de r\u00e9gulariser l'\u00e9tat des pi\u00e8ces mouvements \u00e9chantillon, ce qui pourrait \u00eatre li\u00e9 \u00e0 la gestion des non-conformit\u00e9s",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne d\u00e9crit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, comme exig\u00e9 par la clause 10.2 de l'ISO 9001:2015",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9velopper un processus document\u00e9 pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, en incluant l'analyse de la cause racine et la mise en \u0153uvre d'actions correctives",
+            "Inclure des indicateurs de performance pour \u00e9valuer l'efficacit\u00e9 des actions correctives et am\u00e9liorer continuellement les processus",
+            "R\u00e9viser le document pour inclure des r\u00e9f\u00e9rences explicites \u00e0 la clause 10.2 de l'ISO 9001:2015 et aux exigences li\u00e9es \u00e0 la gestion des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Il n'y a pas de mention de l'analyse de la cause racine des non-conformit\u00e9s, ce qui est un \u00e9l\u00e9ment cl\u00e9 pour d\u00e9terminer les actions correctives n\u00e9cessaires",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9velopper un processus document\u00e9 pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, en incluant l'analyse de la cause racine et la mise en \u0153uvre d'actions correctives",
+            "Inclure des indicateurs de performance pour \u00e9valuer l'efficacit\u00e9 des actions correctives et am\u00e9liorer continuellement les processus",
+            "R\u00e9viser le document pour inclure des r\u00e9f\u00e9rences explicites \u00e0 la clause 10.2 de l'ISO 9001:2015 et aux exigences li\u00e9es \u00e0 la gestion des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne fournit pas d'informations sur l'\u00e9valuation de l'efficacit\u00e9 des actions correctives, ce qui est une exigence de la clause 10.2",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9velopper un processus document\u00e9 pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, en incluant l'analyse de la cause racine et la mise en \u0153uvre d'actions correctives",
+            "Inclure des indicateurs de performance pour \u00e9valuer l'efficacit\u00e9 des actions correctives et am\u00e9liorer continuellement les processus",
+            "R\u00e9viser le document pour inclure des r\u00e9f\u00e9rences explicites \u00e0 la clause 10.2 de l'ISO 9001:2015 et aux exigences li\u00e9es \u00e0 la gestion des non-conformit\u00e9s"
+          ]
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document mentionne la n\u00e9cessit\u00e9 d'informer la direction g\u00e9n\u00e9rale et administrative en cas d'anomalies signal\u00e9es par le client, ce qui correspond \u00e0 la prise en compte des non-conformit\u00e9s",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document \u00e9voque la n\u00e9cessit\u00e9 de prendre des mesures pour compl\u00e9ter les documents manquants, ce qui peut \u00eatre li\u00e9 \u00e0 la prise d'actions correctives",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne d\u00e9finit pas clairement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, comme exig\u00e9 par la clause 10.2 de l'ISO 9001:2015",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter clairement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Int\u00e9grer une analyse de la cause racine des non-conformit\u00e9s pour d\u00e9terminer les actions correctives n\u00e9cessaires",
+            "Pr\u00e9ciser les m\u00e9canismes de mise en \u0153uvre et d'\u00e9valuation de l'efficacit\u00e9 des actions correctives"
+          ]
+        }
+      ],
+      "analysis_date": "2026-01-30T08:39:36.958893",
+      "_id": "6"
+    },
+    {
+      "user_id": null,
+      "document_name": "PRD_2 gestion des risques.docx",
+      "document_type": "procedure",
+      "process_iso": "10.2",
+      "score": 25,
+      "status": "Non conforme",
+      "conform_items": 1,
+      "warning_items": 0,
+      "non_conform_items": 3,
+      "findings": [
+        {
+          "title": "Conforme - Non-conformit\u00e9 et action corrective",
+          "description": "La section d\u00e9finit les termes et d\u00e9finitions li\u00e9s aux risques, ce qui est utile pour la compr\u00e9hension du contexte",
+          "severity": "success",
+          "clause": "\u00a7 10.2",
+          "recommendations": []
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Le document ne r\u00e9pond pas explicitement aux exigences de la clause 10.2 de l'ISO 9001:2015 concernant les actions correctives",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Mettre en place un syst\u00e8me de gestion des non-conformit\u00e9s pour enregistrer et suivre les non-conformit\u00e9s",
+            "\u00c9tablir un processus d'analyse de cause racine pour identifier les causes sous-jacentes des non-conformit\u00e9s et d\u00e9terminer les actions correctives n\u00e9cessaires"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Il n'y a pas de processus d\u00e9fini pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Mettre en place un syst\u00e8me de gestion des non-conformit\u00e9s pour enregistrer et suivre les non-conformit\u00e9s",
+            "\u00c9tablir un processus d'analyse de cause racine pour identifier les causes sous-jacentes des non-conformit\u00e9s et d\u00e9terminer les actions correctives n\u00e9cessaires"
+          ]
+        },
+        {
+          "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+          "description": "Il n'y a pas d'analyse de cause racine des non-conformit\u00e9s pour d\u00e9terminer les actions correctives n\u00e9cessaires",
+          "severity": "danger",
+          "clause": "\u00a7 10.2",
+          "recommendations": [
+            "D\u00e9finir et documenter les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+            "Mettre en place un syst\u00e8me de gestion des non-conformit\u00e9s pour enregistrer et suivre les non-conformit\u00e9s",
+            "\u00c9tablir un processus d'analyse de cause racine pour identifier les causes sous-jacentes des non-conformit\u00e9s et d\u00e9terminer les actions correctives n\u00e9cessaires"
+          ]
+        }
+      ],
+      "analysis_date": "2026-01-30T08:27:25.336195",
+      "_id": "1"
+    }
+  ],
+  "non_conformities": [
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "ENR_13 DEMANDE D_ACHATS LOCAUX.xlsx - Feuil1 form.pdf",
+      "analysis_id": "5",
+      "created_at": "2026-01-30T20:41:19.988030",
+      "updated_at": "2026-01-31T18:37:29.018019",
+      "responsible": "\u00c0 assigner",
+      "_id": "21"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "PSM_DIR et PIL_01 Direction et Pilotage.docx (1).pdf",
+      "analysis_id": "4",
+      "created_at": "2026-01-30T10:22:54.304646",
+      "updated_at": "2026-01-30T10:23:16.942462",
+      "responsible": "\u00c0 assigner",
+      "_id": "20"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Erreur d'analyse: Expecting value: line 1 column 1 (char 0)",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "PSM_DIR et PIL_01 Direction et Pilotage.docx (1).pdf",
+      "analysis_id": "4",
+      "created_at": "2026-01-30T10:22:54.186998",
+      "updated_at": "2026-01-30T10:22:54.187004",
+      "responsible": "\u00c0 assigner",
+      "_id": "19"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Manque de lien explicite avec les objectifs et les politiques de l'organisation",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "ENR_10 Fiche de controle des Articles  \u00e0 la r\u00e9ception.docx.pdf",
+      "analysis_id": "8",
+      "created_at": "2026-01-30T09:19:36.288468",
+      "updated_at": "2026-01-30T09:19:36.288471",
+      "responsible": "\u00c0 assigner",
+      "_id": "18"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Manque de champs de saisie pour l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+      "status": "R\u00e9solu",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "ENR_10 Fiche de controle des Articles  \u00e0 la r\u00e9ception.docx.pdf",
+      "analysis_id": "8",
+      "created_at": "2026-01-30T09:19:36.274535",
+      "updated_at": "2026-01-30T10:05:44.525610",
+      "responsible": "\u00c0 assigner",
+      "_id": "17"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Manque de champs de saisie pour la planification et la mise en \u0153uvre des actions correctives",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "ENR_10 Fiche de controle des Articles  \u00e0 la r\u00e9ception.docx.pdf",
+      "analysis_id": "8",
+      "created_at": "2026-01-30T09:19:36.260529",
+      "updated_at": "2026-01-30T09:19:36.260534",
+      "responsible": "\u00c0 assigner",
+      "_id": "16"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Manque de champs de saisie pour l'analyse de cause racine des non-conformit\u00e9s",
+      "status": "R\u00e9solu",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "ENR_10 Fiche de controle des Articles  \u00e0 la r\u00e9ception.docx.pdf",
+      "analysis_id": "8",
+      "created_at": "2026-01-30T09:19:36.205158",
+      "updated_at": "2026-01-30T09:29:32.217053",
+      "responsible": "\u00c0 assigner",
+      "_id": "15"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne d\u00e9finit pas clairement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, comme exig\u00e9 par la clause 10.2 de l'ISO 9001:2015",
+      "status": "R\u00e9solu",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.200053",
+      "updated_at": "2026-01-30T09:29:30.626699",
+      "responsible": "\u00c0 assigner",
+      "_id": "14"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne fournit pas d'informations sur l'\u00e9valuation de l'efficacit\u00e9 des actions correctives, ce qui est une exigence de la clause 10.2",
+      "status": "R\u00e9solu",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.174057",
+      "updated_at": "2026-01-30T09:11:53.145280",
+      "responsible": "\u00c0 assigner",
+      "_id": "13"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Il n'y a pas de mention de l'analyse de la cause racine des non-conformit\u00e9s, ce qui est un \u00e9l\u00e9ment cl\u00e9 pour d\u00e9terminer les actions correctives n\u00e9cessaires",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.152842",
+      "updated_at": "2026-01-30T10:05:47.504263",
+      "responsible": "\u00c0 assigner",
+      "_id": "12"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne d\u00e9crit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, comme exig\u00e9 par la clause 10.2 de l'ISO 9001:2015",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.127917",
+      "updated_at": "2026-01-30T08:39:37.127922",
+      "responsible": "\u00c0 assigner",
+      "_id": "11"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne d\u00e9crit pas les actions correctives mises en \u0153uvre pour \u00e9liminer les causes des non-conformit\u00e9s et pr\u00e9venir leur r\u00e9p\u00e9tition, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.103496",
+      "updated_at": "2026-01-30T09:29:27.072436",
+      "responsible": "\u00c0 assigner",
+      "_id": "10"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne fournit pas d'informations sur l'analyse de la cause racine des non-conformit\u00e9s, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.075826",
+      "updated_at": "2026-01-30T09:29:37.165585",
+      "responsible": "\u00c0 assigner",
+      "_id": "9"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne d\u00e9crit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration, ce qui est une exigence de la clause 10.2 de l'ISO 9001:2015.",
+      "status": "V\u00e9rifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.053021",
+      "updated_at": "2026-01-30T09:29:43.915068",
+      "responsible": "\u00c0 assigner",
+      "_id": "8"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Il n'y a pas de proc\u00e9dure d\u00e9di\u00e9e pour les actions correctives et la pr\u00e9vention de la r\u00e9p\u00e9tition des non-conformit\u00e9s",
+      "status": "V\u00e9rifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.031942",
+      "updated_at": "2026-01-30T09:29:54.115167",
+      "responsible": "\u00c0 assigner",
+      "_id": "7"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne mentionne pas l'\u00e9valuation de l'efficacit\u00e9 des actions correctives",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:37.008845",
+      "updated_at": "2026-01-30T08:39:37.008850",
+      "responsible": "\u00c0 assigner",
+      "_id": "6"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Il n'y a pas d'information sur l'analyse de la cause racine des non-conformit\u00e9s",
+      "status": "V\u00e9rifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:36.986513",
+      "updated_at": "2026-01-30T09:29:55.919113",
+      "responsible": "\u00c0 assigner",
+      "_id": "5"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne d\u00e9finit pas explicitement les processus pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+      "status": "R\u00e9solu",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "CIP GESTION DE STOCK.docx.pdf",
+      "analysis_id": "6",
+      "created_at": "2026-01-30T08:39:36.963251",
+      "updated_at": "2026-01-30T10:05:54.368924",
+      "responsible": "\u00c0 assigner",
+      "_id": "4"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Il n'y a pas d'analyse de cause racine des non-conformit\u00e9s pour d\u00e9terminer les actions correctives n\u00e9cessaires",
+      "status": "En Cours",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "PRD_2 gestion des risques.docx",
+      "analysis_id": "1",
+      "created_at": "2026-01-30T08:27:25.423516",
+      "updated_at": "2026-01-31T18:37:32.779673",
+      "responsible": "\u00c0 assigner",
+      "_id": "3"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Il n'y a pas de processus d\u00e9fini pour traiter les non-conformit\u00e9s et les opportunit\u00e9s d'am\u00e9lioration",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "PRD_2 gestion des risques.docx",
+      "analysis_id": "1",
+      "created_at": "2026-01-30T08:27:25.401834",
+      "updated_at": "2026-01-30T08:27:25.401841",
+      "responsible": "\u00c0 assigner",
+      "_id": "2"
+    },
+    {
+      "title": "Non-conforme - Non-conformit\u00e9 et action corrective",
+      "description": "Le document ne r\u00e9pond pas explicitement aux exigences de la clause 10.2 de l'ISO 9001:2015 concernant les actions correctives",
+      "status": "Identifi\u00e9",
+      "severity": "Critical",
+      "clause": "\u00a7 10.2",
+      "document_ref": "PRD_2 gestion des risques.docx",
+      "analysis_id": "1",
+      "created_at": "2026-01-30T08:27:25.340368",
+      "updated_at": "2026-01-30T08:27:25.340376",
+      "responsible": "\u00c0 assigner",
+      "_id": "1"
+    }
+  ]
+}

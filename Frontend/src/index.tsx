@@ -17,6 +17,7 @@ import { BibliothequePage } from './pages/bibliotheque'
 import { CollaborationPage } from './pages/collaboration'
 import { AdministrationPage } from './pages/administration'
 import { ProfilPage } from './pages/profil'
+import { ChatbotPage } from './pages/chatbot'
 
 const app = new Hono()
 
@@ -82,11 +83,15 @@ app.get('/profil', (c) => {
   return c.render(<ProfilPage />)
 })
 
+app.get('/chatbot', (c) => {
+  return c.html(<ChatbotPage />)
+})
+
 // API Routes pour le Chat Bot
 app.post('/api/chat/send', async (c) => {
   try {
     const { message } = await c.req.json()
-    
+
     // Simulation de réponse (en production, appeler GPT-4, Claude, etc.)
     const response = {
       id: Date.now().toString(),
@@ -94,7 +99,7 @@ app.post('/api/chat/send', async (c) => {
       content: `Réponse du bot à : "${message}"`,
       timestamp: new Date().toISOString()
     }
-    
+
     return c.json(response)
   } catch (error) {
     return c.json({ error: 'Erreur lors de l\'envoi du message' }, 500)
@@ -106,7 +111,7 @@ app.post('/api/analyse/upload', async (c) => {
   try {
     // En production, traiter le fichier uploadé
     const body = await c.req.parseBody()
-    
+
     return c.json({
       success: true,
       message: 'Document reçu pour analyse',
@@ -121,7 +126,7 @@ app.post('/api/analyse/upload', async (c) => {
 app.post('/api/generation/generate', async (c) => {
   try {
     const params = await c.req.json()
-    
+
     // En production, générer le document via IA
     const document = {
       id: Date.now().toString(),
@@ -129,7 +134,7 @@ app.post('/api/generation/generate', async (c) => {
       content: 'Document généré...',
       createdAt: new Date().toISOString()
     }
-    
+
     return c.json(document)
   } catch (error) {
     return c.json({ error: 'Erreur lors de la génération' }, 500)

@@ -27,10 +27,10 @@ export function DashboardPage() {
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <div class="text-sm font-medium text-gray-600 mb-1">Score Conformité</div>
-                <div class="text-3xl font-bold text-blue-600 mb-2">78%</div>
+                <div class="text-3xl font-bold text-blue-600 mb-2" id="avgScore">--%</div>
                 <div class="flex items-center text-sm text-green-600">
-                  <i class="fas fa-arrow-up mr-1"></i>
-                  <span>+5% ce mois</span>
+                  <i class="fas fa-arrow-up mr-1" id="scoreTrendIcon"></i>
+                  <span id="scoreTrendText">En attente</span>
                 </div>
               </div>
               <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
@@ -44,10 +44,10 @@ export function DashboardPage() {
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <div class="text-sm font-medium text-gray-600 mb-1">Documents Analysés</div>
-                <div class="text-3xl font-bold text-purple-600 mb-2">24</div>
+                <div class="text-3xl font-bold text-purple-600 mb-2" id="totalAnalyses">--</div>
                 <div class="flex items-center text-sm text-gray-600">
                   <i class="fas fa-calendar mr-1"></i>
-                  <span>Ce mois</span>
+                  <span>Total</span>
                 </div>
               </div>
               <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
@@ -61,7 +61,7 @@ export function DashboardPage() {
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <div class="text-sm font-medium text-gray-600 mb-1">NC Ouvertes</div>
-                <div class="text-3xl font-bold text-red-600 mb-2">3</div>
+                <div class="text-3xl font-bold text-red-600 mb-2" id="totalNCs">--</div>
                 <div class="flex items-center text-sm text-red-600">
                   <i class="fas fa-exclamation-circle mr-1"></i>
                   <span>À traiter</span>
@@ -77,15 +77,15 @@ export function DashboardPage() {
           <div class="card shadow-card-hover cursor-pointer hover:scale-105 transition-transform">
             <div class="flex items-start justify-between">
               <div class="flex-1">
-                <div class="text-sm font-medium text-gray-600 mb-1">Docs Générés</div>
-                <div class="text-3xl font-bold text-green-600 mb-2">12</div>
+                <div class="text-sm font-medium text-gray-600 mb-1">Dernier score</div>
+                <div class="text-3xl font-bold text-green-600 mb-2" id="lastScore">--%</div>
                 <div class="flex items-center text-sm text-green-600">
-                  <i class="fas fa-check-circle mr-1"></i>
-                  <span>+3 cette semaine</span>
+                  <i class="fas fa-history mr-1"></i>
+                  <span>Dernière analyse</span>
                 </div>
               </div>
               <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                <i class="fas fa-file-contract text-green-600 text-xl"></i>
+                <i class="fas fa-check-circle text-green-600 text-xl"></i>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export function DashboardPage() {
             <i class="fas fa-bolt text-yellow-500 mr-2"></i>
             Accès Rapide
           </h2>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a href="/chat" class="group">
               <div class="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer">
@@ -137,7 +137,7 @@ export function DashboardPage() {
             <i class="fas fa-chart-line text-blue-500 mr-2"></i>
             Évolution de la Conformité Globale
           </h2>
-          
+
           <div class="relative h-64 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6">
             {/* Axe Y */}
             <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-500 py-6">
@@ -227,51 +227,9 @@ export function DashboardPage() {
               </span>
               <a href="#" class="text-sm text-blue-600 hover:text-blue-700">Voir tout</a>
             </h2>
-            
-            <div class="space-y-4">
-              <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-check text-green-600"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="text-sm font-medium text-gray-900">Document PROC-ACH-001 analysé</p>
-                  <p class="text-xs text-gray-500">Score : 92/100 - Conforme</p>
-                  <p class="text-xs text-gray-400 mt-1">Il y a 2 heures</p>
-                </div>
-              </div>
 
-              <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-file-alt text-blue-600"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="text-sm font-medium text-gray-900">Procédure de maintenance générée</p>
-                  <p class="text-xs text-gray-500">PROC-MAINT-002.docx</p>
-                  <p class="text-xs text-gray-400 mt-1">Il y a 5 heures</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-exclamation text-yellow-600"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="text-sm font-medium text-gray-900">NC-2024-003 créée</p>
-                  <p class="text-xs text-gray-500">Critères d'évaluation fournisseurs</p>
-                  <p class="text-xs text-gray-400 mt-1">Hier</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-comments text-purple-600"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="text-sm font-medium text-gray-900">15 questions posées au Chat Bot</p>
-                  <p class="text-xs text-gray-500">Sur les clauses § 8.4 et § 7.5</p>
-                  <p class="text-xs text-gray-400 mt-1">Cette semaine</p>
-                </div>
-              </div>
+            <div id="recentActivityList" class="space-y-4">
+              <p class="text-gray-500 italic">Chargement des activités...</p>
             </div>
           </div>
 
@@ -281,7 +239,7 @@ export function DashboardPage() {
               <i class="fas fa-chart-pie text-purple-500 mr-2"></i>
               Vue d'ensemble Conformité
             </h2>
-            
+
             <div class="flex items-center justify-center mb-6">
               <div class="score-circle score-good">
                 <span>78%</span>
@@ -402,12 +360,68 @@ export function DashboardPage() {
 
       <script dangerouslySetInnerHTML={{
         __html: `
-          // Update last login time
           const now = new Date();
-          document.getElementById('lastLogin').textContent = now.toLocaleTimeString('fr-FR', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-          });
+          const lastLoginEl = document.getElementById('lastLogin');
+          if (lastLoginEl) {
+            lastLoginEl.textContent = now.toLocaleTimeString('fr-FR', { 
+              hour: '2-digit', 
+              minute: '2-digit' 
+            });
+          }
+
+          async function loadDashboardData() {
+            try {
+              const statsRes = await fetch('http://localhost:8000/api/conformity/stats');
+              const stats = await statsRes.json();
+              
+              if (document.getElementById('avgScore')) document.getElementById('avgScore').textContent = stats.average_score + '%';
+              if (document.getElementById('totalAnalyses')) document.getElementById('totalAnalyses').textContent = stats.total_analyses;
+              if (document.getElementById('scoreTrendText')) document.getElementById('scoreTrendText').textContent = stats.this_week + ' analyses cette semaine';
+
+              const historyRes = await fetch('http://localhost:8000/api/conformity/history');
+              const historyData = await historyRes.json();
+              const history = historyData.history || [];
+
+              if (history.length > 0 && document.getElementById('lastScore')) {
+                document.getElementById('lastScore').textContent = history[0].score + '%';
+              }
+
+              displayActivity(history);
+
+              const ncRes = await fetch('http://localhost:8000/api/conformity/non-conformities');
+              const ncData = await ncRes.json();
+              if (document.getElementById('totalNCs')) document.getElementById('totalNCs').textContent = ncData.non_conformities.length;
+            } catch (error) {
+              console.error('Error loading dashboard data:', error);
+            }
+          }
+
+          function displayActivity(history) {
+            const container = document.getElementById('recentActivityList');
+            if (!container) return;
+            if (history.length === 0) {
+              container.innerHTML = '<p class="text-gray-500 italic">Aucune activité récente.</p>';
+              return;
+            }
+
+            container.innerHTML = history.slice(0, 5).map(item => {
+              const color = item.score >= 80 ? 'green' : 'yellow';
+              const date = new Date(item.analysis_date).toLocaleDateString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+              
+              return '<div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">' +
+                '<div class="w-10 h-10 bg-' + color + '-100 rounded-full flex items-center justify-center flex-shrink-0">' +
+                  '<i class="fas fa-check text-' + color + '-600"></i>' +
+                '</div>' +
+                '<div class="flex-1">' +
+                  '<p class="text-sm font-medium text-gray-900">Analyse de ' + item.document_name + '</p>' +
+                  '<p class="text-xs text-gray-500">Score : ' + item.score + '/100 - ' + item.status + '</p>' +
+                  '<p class="text-xs text-gray-400 mt-1">' + date + '</p>' +
+                '</div>' +
+              '</div>';
+            }).join('');
+          }
+
+          document.addEventListener('DOMContentLoaded', loadDashboardData);
         `
       }} />
     </Layout>

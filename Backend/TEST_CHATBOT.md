@@ -287,3 +287,6 @@ echo -e "\n✅ Tests terminés!"
 - Vérifiez les logs du backend pour plus de détails en cas d'erreur
 
 
+
+
+

@@ -157,6 +157,21 @@ export function LoginPage() {
               </div>
             </form>
 
+            {/* Demo Mode Button */}
+            <div class="mt-4">
+              <button
+                type="button"
+                onclick="handleDemoLogin()"
+                class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <i class="fas fa-magic mr-2"></i>
+                🚀 Mode Démo (Accès Direct)
+              </button>
+              <p class="text-xs text-gray-500 text-center mt-2">
+                Accédez directement au dashboard sans authentification
+              </p>
+            </div>
+
             <div class="mt-6 text-center">
               <p class="text-sm text-gray-600">
                 Pas encore de compte ?
@@ -188,6 +203,19 @@ export function LoginPage() {
               Utils.showNotification('Erreur de connexion', 'error');
             }
             return false;
+          }
+
+          async function handleDemoLogin() {
+            Utils.showNotification('Connexion en mode démo...', 'info');
+            const success = await Auth.demoLogin();
+            if (success) {
+              Utils.showNotification('Mode démo activé !', 'success');
+              setTimeout(() => {
+                window.location.href = '/dashboard';
+              }, 500);
+            } else {
+              Utils.showNotification('Erreur lors de la connexion démo', 'error');
+            }
           }
         `
       }} />

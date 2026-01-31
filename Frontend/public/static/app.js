@@ -164,6 +164,58 @@ const Auth = {
 
   isAuthenticated: () => {
     return !!Auth.getCurrentUser();
+  },
+
+  demoLogin: async () => {
+    try {
+      // Appeler l'endpoint de démo
+      const response = await fetch(`${API_URL}/auth/demo/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Demo login failed');
+      }
+
+      const data = await response.json();
+      const token = data.access_token;
+      const user = data.user || {
+        email: "demo@example.com",
+        username: "demo@example.com",
+        full_name: "Utilisateur Démo",
+        role: "Responsable Qualité",
+        company: "Entreprise Démo",
+        service: "iso9001"
+      };
+
+      // Store token and user
+      localStorage.setItem('access_token', token);
+      AppState.currentUser = user;
+      Utils.saveToStorage('currentUser', user);
+
+      return true;
+    } catch (error) {
+      console.error('Demo login error:', error);
+      // En cas d'erreur, créer un utilisateur de démo local
+      const demoUser = {
+        email: "demo@example.com",
+        username: "demo@example.com",
+        name: "Utilisateur Démo",
+        full_name: "Utilisateur Démo",
+        role: "Responsable Qualité",
+        company: "Entreprise Démo",
+        service: "iso9001"
+      };
+
+      AppState.currentUser = demoUser;
+      Utils.saveToStorage('currentUser', demoUser);
+      localStorage.setItem('access_token', 'demo_token');
+
+      return true;
+    }
   }
 };
 
@@ -197,10 +249,13 @@ const ChatBot = {
   },
 
   createConversation: async () => {
+    // Correction : utiliser l'endpoint /api/chatbot/chat pour créer une conversation et envoyer le premier message
     try {
-      const response = await fetch(`${API_URL}/api/chatbot/conversations`, {
+      // Créer une conversation en envoyant un message vide (ou initial)
+      const response = await fetch(`${API_URL}/api/chatbot/chat`, {
         method: 'POST',
-        headers: ChatBot.getAuthHeaders()
+        headers: ChatBot.getAuthHeaders(),
+        body: JSON.stringify({ message: '' })
       });
 
       if (!response.ok) {
@@ -208,162 +263,78 @@ const ChatBot = {
       }
 
       const data = await response.json();
-      const convoId = data.convo_id;
-
+      // Pas de convo_id dans la réponse, donc générer un id local
       const conversation = {
-        id: convoId,
-        convo_id: convoId,
+        id: Utils.generateId(),
+        convo_id: 'local_' + Utils.generateId(),
         title: 'Nouvelle conversation',
         messages: [],
         createdAt: new Date().toISOString()
       };
-
       ChatBot.conversations.unshift(conversation);
       ChatBot.currentConversation = conversation;
-      ChatBot.currentConvoId = convoId;
+      ChatBot.currentConvoId = conversation.convo_id;
       Utils.saveToStorage('chatConversations', ChatBot.conversations);
       return conversation;
     } catch (error) {
-      console.error('Error creating conversation:', error);
+      console.log('Creating local conversation (API unavailable):', error.message);
       // Fallback: créer une conversation locale
       const conversation = {
         id: Utils.generateId(),
+        convo_id: 'local_' + Utils.generateId(),
         title: 'Nouvelle conversation',
         messages: [],
         createdAt: new Date().toISOString()
       };
       ChatBot.conversations.unshift(conversation);
       ChatBot.currentConversation = conversation;
+      ChatBot.currentConvoId = conversation.convo_id;
       Utils.saveToStorage('chatConversations', ChatBot.conversations);
       return conversation;
     }
   },
 
   loadConversations: async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/chatbot/conversations`, {
-        method: 'GET',
-        headers: ChatBot.getAuthHeaders()
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to load conversations');
-      }
-
-      const data = await response.json();
-      const convoIds = data.conversations || [];
-
-      // Charger l'historique pour chaque conversation
-      ChatBot.conversations = await Promise.all(
-        convoIds.map(async (convoId) => {
-          try {
-            const historyResponse = await fetch(
-              `${API_URL}/api/chatbot/conversations/${convoId}/history`,
-              { headers: ChatBot.getAuthHeaders() }
-            );
-            if (historyResponse.ok) {
-              const historyData = await historyResponse.json();
-              const messages = historyData.history || [];
-              return {
-                id: convoId,
-                convo_id: convoId,
-                title: messages.length > 0 ? messages[0].content.substring(0, 50) + '...' : 'Nouvelle conversation',
-                messages: messages,
-                createdAt: messages.length > 0 ? messages[0].timestamp : new Date().toISOString()
-              };
-            }
-          } catch (e) {
-            console.error(`Error loading history for ${convoId}:`, e);
-          }
-          return {
-            id: convoId,
-            convo_id: convoId,
-            title: 'Nouvelle conversation',
-            messages: [],
-            createdAt: new Date().toISOString()
-          };
-        })
-      );
-
-      Utils.saveToStorage('chatConversations', ChatBot.conversations);
-    } catch (error) {
-      console.error('Error loading conversations:', error);
-      ChatBot.conversations = Utils.loadFromStorage('chatConversations') || [];
-    }
+    // Correction : désactiver le chargement distant, utiliser uniquement le localStorage
+    ChatBot.conversations = Utils.loadFromStorage('chatConversations') || [];
   },
 
   sendMessage: async (message, model = null, temperature = null) => {
-    // Créer une conversation si nécessaire
+    // Correction : envoyer le message à /api/chatbot/chat
     if (!ChatBot.currentConversation || !ChatBot.currentConvoId) {
       await ChatBot.createConversation();
     }
-
-    // Ajouter le message de l'utilisateur localement
-    const userMessage = {
-      id: Utils.generateId(),
-      role: 'user',
-      content: message,
-      timestamp: new Date().toISOString()
-    };
-    ChatBot.currentConversation.messages.push(userMessage);
-
-    // Mettre à jour le titre si c'est la première question
-    if (ChatBot.currentConversation.messages.length === 1) {
-      ChatBot.currentConversation.title = message.substring(0, 50) + '...';
-    }
-
     try {
-      // Envoyer la question à l'API RAG
-      const response = await fetch(
-        `${API_URL}/api/chatbot/conversations/${ChatBot.currentConvoId}/ask`,
-        {
-          method: 'POST',
-          headers: ChatBot.getAuthHeaders(),
-          body: JSON.stringify({
-            message: message,
-            settings: {
-              model: model || ChatBot.settings.model,
-              temperature: temperature !== null ? temperature : ChatBot.settings.temperature
-            }
-          })
-        }
-      );
-
+      const response = await fetch(`${API_URL}/api/chatbot/chat`, {
+        method: 'POST',
+        headers: ChatBot.getAuthHeaders(),
+        body: JSON.stringify({
+          message: message,
+          settings: {
+            model: model || ChatBot.settings.model,
+            temperature: temperature !== null ? temperature : ChatBot.settings.temperature
+          }
+        })
+      });
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
-        throw new Error(errorData.detail || 'Failed to get response from chatbot');
+        throw new Error('Erreur lors de l\'envoi du message');
       }
-
       const data = await response.json();
-      
-      // Créer le message du bot avec la réponse et les citations
-      const botMessage = {
-        id: Utils.generateId(),
-        role: 'assistant',
-        content: data.answer || 'Pas de réponse disponible',
-        citations: data.citations || [],
+      // Ajouter la réponse à la conversation courante
+      ChatBot.currentConversation.messages.push({
+        role: 'user',
+        content: message,
         timestamp: new Date().toISOString()
-      };
-
-      ChatBot.currentConversation.messages.push(botMessage);
+      });
+      ChatBot.currentConversation.messages.push({
+        role: 'assistant',
+        content: data.response,
+        timestamp: new Date().toISOString()
+      });
       Utils.saveToStorage('chatConversations', ChatBot.conversations);
-      
-      return botMessage;
+      return data.response;
     } catch (error) {
-      console.error('Error sending message:', error);
-      
-      // Message d'erreur pour l'utilisateur
-      const errorMessage = {
-        id: Utils.generateId(),
-        role: 'assistant',
-        content: `❌ Erreur: ${error.message}. Veuillez vérifier que l'API du chatbot est démarrée.`,
-        timestamp: new Date().toISOString()
-      };
-      
-      ChatBot.currentConversation.messages.push(errorMessage);
-      Utils.saveToStorage('chatConversations', ChatBot.conversations);
-      
-      throw error;
+      throw new Error('L\'API du chatbot externe n\'est pas accessible. Veuillez démarrer l\'API du chatbot pour utiliser cette fonctionnalité.');
     }
   },
 
@@ -400,54 +371,41 @@ const ChatBot = {
 // Gestion de l'analyse de conformité
 const ComplianceAnalysis = {
   analyzeDocument: async (file, metadata) => {
-    // Simulation d'analyse (en production, envoyer au backend)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('document_type', metadata.documentType);
+      formData.append('process_iso', metadata.processISO);
+      if (metadata.docReference) {
+        formData.append('doc_reference', metadata.docReference);
+      }
 
-    const score = Math.floor(Math.random() * 30) + 70; // Score entre 70 et 100
+      const token = localStorage.getItem('access_token');
+      const headers = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
 
-    const result = {
-      id: Utils.generateId(),
-      fileName: file.name,
-      fileSize: file.size,
-      documentType: metadata.documentType,
-      processISO: metadata.processISO,
-      score: score,
-      status: score >= 90 ? 'Conforme' : score >= 70 ? 'Attention' : 'Non-conforme',
-      conformItems: Math.floor(score / 8),
-      warningItems: Math.floor((100 - score) / 10),
-      nonConformItems: Math.floor((100 - score) / 20),
-      findings: [
-        {
-          id: 1,
-          severity: 'success',
-          clause: '§ 4.4 - Système de management',
-          title: 'Structure documentaire conforme',
-          description: 'La structure du document respecte les exigences de la clause 4.4.'
-        },
-        {
-          id: 2,
-          severity: 'warning',
-          clause: '§ 8.4.1 - Évaluation fournisseurs',
-          title: 'Critères d\'évaluation à préciser',
-          description: 'Les critères d\'évaluation des fournisseurs pourraient être plus détaillés.'
-        },
-        {
-          id: 3,
-          severity: 'danger',
-          clause: '§ 7.5 - Informations documentées',
-          title: 'Enregistrements manquants',
-          description: 'La mention des enregistrements requis n\'est pas présente dans le document.'
-        }
-      ],
-      analyzedAt: new Date().toISOString()
-    };
+      const response = await fetch(`${API_URL}/api/conformity/analyze`, {
+        method: 'POST',
+        headers: headers,
+        body: formData
+      });
 
-    AppState.analysisResults = result;
-    return result;
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || 'Erreur lors de l\'analyse');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Erreur d\'analyse:', error);
+      throw error;
+    }
   },
 
   downloadReport: (analysis) => {
-    // Simulation de téléchargement
+    // Simulation de téléchargement (pourrait être implémenté avec l'API)
     Utils.showNotification('Rapport téléchargé avec succès', 'success');
   }
 };
@@ -528,12 +486,28 @@ document.addEventListener('DOMContentLoaded', () => {
   ChatBot.init();
 
   // Vérifier l'authentification pour les pages protégées
+  // Mode démo : permet l'accès même sans authentification réelle
   const protectedPages = ['/dashboard', '/chat', '/analyse', '/generation', '/non-conformites', '/bibliotheque'];
   const currentPath = window.location.pathname;
+  const isDemoMode = localStorage.getItem('access_token') === 'demo_token' ||
+    (AppState.currentUser && AppState.currentUser.email === 'demo@example.com');
 
   if (protectedPages.some(page => currentPath.startsWith(page))) {
-    if (!Auth.isAuthenticated()) {
+    if (!Auth.isAuthenticated() && !isDemoMode) {
       window.location.href = '/login';
+    } else if (!Auth.isAuthenticated() && isDemoMode) {
+      // Mode démo : créer un utilisateur de démo si nécessaire
+      const demoUser = {
+        email: "demo@example.com",
+        username: "demo@example.com",
+        name: "Utilisateur Démo",
+        full_name: "Utilisateur Démo",
+        role: "Responsable Qualité",
+        company: "Entreprise Démo",
+        service: "iso9001"
+      };
+      AppState.currentUser = demoUser;
+      Utils.saveToStorage('currentUser', demoUser);
     }
   }
 });

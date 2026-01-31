@@ -2,8 +2,8 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
   return (
     <div class="min-h-screen bg-gray-50">
       {/* Header */}
-      <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div class="px-4 py-3 flex items-center justify-between">
+      <header class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-40 h-16">
+        <div class="px-4 py-3 h-full flex items-center justify-between">
           <div class="flex items-center space-x-4">
             <button
               onclick="toggleSidebar()"
@@ -71,7 +71,7 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
                       <i class="fas fa-cog w-5"></i>
                       <span>Paramètres</span>
                     </a>
-                    <button onclick="Auth.logout()" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
+                    <button onclick="if(typeof Auth !== 'undefined') Auth.logout()" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
                       <i class="fas fa-sign-out-alt w-5"></i>
                       <span>Déconnexion</span>
                     </button>
@@ -83,11 +83,11 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
         </div>
       </header>
 
-      <div class="flex">
+      <div class="flex pt-16">
         {/* Sidebar */}
         <aside
           id="sidebar"
-          class="w-64 bg-white border-r border-gray-200 fixed left-0 top-16 bottom-0 overflow-y-auto lg:static z-30 transition-transform duration-300"
+          class="w-64 bg-white border-r border-gray-200 fixed left-0 top-16 bottom-0 overflow-y-auto lg:translate-x-0 -translate-x-full z-30 transition-transform duration-300"
         >
           <nav class="p-4 space-y-2">
             {/* Section Titre */}
@@ -112,6 +112,12 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
             <a href="/analyse" class={`sidebar-link ${currentPage === 'analyse' ? 'active' : ''}`}>
               <i class="fas fa-file-medical w-5"></i>
               <span class="ml-3">Analyse Documents</span>
+            </a>
+
+            {/* Génération de Documents */}
+            <a href="/generation" class={`sidebar-link ${currentPage === 'generation' ? 'active' : ''}`}>
+              <i class="fas fa-file-contract w-5"></i>
+              <span class="ml-3">Génération de Documents</span>
             </a>
 
             {/* Non-Conformités */}
@@ -142,7 +148,7 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
         </aside>
 
         {/* Main content */}
-        <main class="flex-1 p-6 lg:ml-0">
+        <main class="flex-1 p-6 lg:ml-64">
           {children}
         </main>
       </div>
@@ -156,12 +162,27 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
 
       <script dangerouslySetInnerHTML={{
         __html: `
-          // Update user name in header
-          const user = Auth.getCurrentUser();
-          if (user) {
-            document.getElementById('userName').textContent = user.name || user.email;
-            document.getElementById('dropdownUserName').textContent = user.name || user.email;
-            document.getElementById('dropdownUserEmail').textContent = user.email;
+          // Wait for app.js to load before accessing Auth
+          function initializeLayout() {
+            // Update user name in header
+            if (typeof Auth !== 'undefined') {
+              const user = Auth.getCurrentUser();
+              if (user) {
+                const userNameEl = document.getElementById('userName');
+                const dropdownUserNameEl = document.getElementById('dropdownUserName');
+                const dropdownUserEmailEl = document.getElementById('dropdownUserEmail');
+                if (userNameEl) userNameEl.textContent = user.name || user.full_name || user.email;
+                if (dropdownUserNameEl) dropdownUserNameEl.textContent = user.name || user.full_name || user.email;
+                if (dropdownUserEmailEl) dropdownUserEmailEl.textContent = user.email;
+              }
+            }
+          }
+
+          // Run after DOM is loaded
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeLayout);
+          } else {
+            initializeLayout();
           }
 
           // Toggle user menu dropdown

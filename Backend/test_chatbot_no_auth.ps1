@@ -115,3 +115,6 @@ Write-Host "- POST /api/chatbot/conversations (avec token)" -ForegroundColor Whi
 Write-Host "- POST /api/chatbot/conversations/{id}/ask (avec token)" -ForegroundColor White
 
 
+
+
+
