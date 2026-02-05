@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function BibliothequePage() {
   return (
@@ -53,7 +53,7 @@ export function BibliothequePage() {
               <i class="fas fa-sitemap text-blue-600 mr-2"></i>
               Processus ISO 9001
             </h3>
-            
+
             <div class="space-y-2">
               <div class="cursor-pointer">
                 <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
@@ -161,9 +161,9 @@ export function BibliothequePage() {
             <div class="card">
               <div class="flex items-center space-x-4">
                 <div class="flex-1">
-                  <input 
-                    type="text" 
-                    class="input-field" 
+                  <input
+                    type="text"
+                    class="input-field"
                     placeholder="Rechercher un document..."
                   />
                 </div>

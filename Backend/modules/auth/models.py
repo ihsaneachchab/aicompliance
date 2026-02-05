@@ -18,14 +18,13 @@ class UserBase(BaseModel):
     selected_service: Optional[str] = None
     terms_accepted: bool = False
     newsletter_accepted: bool = False
-    is_active: bool = False
+    is_active: bool = True
 
 class UserCreate(UserBase):
     password: str
 
 class UserInDB(UserBase):
     hashed_password: str
-    verification_token: Optional[str] = None
 
 class UserResponse(UserBase):
     id: str = Field(alias="_id") # Map Mongo _id to id

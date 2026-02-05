@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function AdministrationPage() {
   return (
@@ -14,24 +14,24 @@ export function AdministrationPage() {
         <div class="card">
           <div class="border-b border-gray-200">
             <nav class="flex space-x-8">
-              <button 
-                id="usersTab" 
+              <button
+                id="usersTab"
                 class="py-4 px-1 border-b-2 border-blue-600 font-medium text-sm text-blue-600"
                 onclick="switchTab('users')"
               >
                 <i class="fas fa-users mr-2"></i>
                 Utilisateurs
               </button>
-              <button 
-                id="rolesTab" 
+              <button
+                id="rolesTab"
                 class="py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700"
                 onclick="switchTab('roles')"
               >
                 <i class="fas fa-shield-alt mr-2"></i>
                 Rôles & Permissions
               </button>
-              <button 
-                id="configTab" 
+              <button
+                id="configTab"
                 class="py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700"
                 onclick="switchTab('config')"
               >
@@ -322,7 +322,7 @@ export function AdministrationPage() {
                 <i class="fas fa-sliders-h text-blue-600 mr-2"></i>
                 Seuils d'alerte
               </h3>
-              
+
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -368,7 +368,7 @@ export function AdministrationPage() {
                 <i class="fas fa-plug text-purple-600 mr-2"></i>
                 Intégrations
               </h3>
-              
+
               <div class="space-y-3">
                 <div class="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
                   <div class="flex items-center space-x-3">

@@ -13,17 +13,18 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # Email
-    MAIL_USERNAME: str = "your_email@gmail.com"
-    MAIL_PASSWORD: str = "your_password"
-    MAIL_FROM: str = "your_email@gmail.com"
-    MAIL_PORT: int = 587
+    SMTP_USERNAME: str = "Ai_complaince"
+    MAIL_PASSWORD: str = "brygqharblbydttv"
+    MAIL_FROM: str = "sabikelkhayr@gmail.com"
+    MAIL_PORT: int = 465
     MAIL_SERVER: str = "smtp.gmail.com"
-    MAIL_STARTTLS: bool = True
-    MAIL_SSL_TLS: bool = False
+    MAIL_STARTTLS: bool = False
+    MAIL_SSL_TLS: bool = True
     USE_CREDENTIALS: bool = True
     VALIDATE_CERTS: bool = True
 
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 settings = Settings()

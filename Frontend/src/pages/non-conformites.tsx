@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function NonConformitesPage() {
   return (
@@ -68,16 +68,16 @@ export function NonConformitesPage() {
           <div class="flex items-center space-x-4">
             {/* View Toggle */}
             <div class="flex items-center bg-gray-100 rounded-lg p-1">
-              <button 
-                id="kanbanViewBtn" 
+              <button
+                id="kanbanViewBtn"
                 class="px-4 py-2 rounded-lg font-medium transition-all bg-white text-blue-600 shadow-sm"
                 onclick="switchView('kanban')"
               >
                 <i class="fas fa-columns mr-2"></i>
                 Kanban
               </button>
-              <button 
-                id="listViewBtn" 
+              <button
+                id="listViewBtn"
                 class="px-4 py-2 rounded-lg font-medium transition-all text-gray-600 hover:text-gray-900"
                 onclick="switchView('list')"
               >
@@ -90,16 +90,16 @@ export function NonConformitesPage() {
             <div class="flex-1">
               <div class="relative">
                 <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                <input 
+                <input
                   id="searchInput"
-                  type="text" 
-                  class="input-field pl-10" 
+                  type="text"
+                  class="input-field pl-10"
                   placeholder="Rechercher une non-conformité..."
                   onkeyup="filterNC()"
                 />
               </div>
             </div>
-            
+
             <select id="statusFilter" class="input-field w-48" onchange="filterNC()">
               <option value="">Tous les statuts</option>
               <option value="Identifié">Identifié</option>
@@ -107,7 +107,7 @@ export function NonConformitesPage() {
               <option value="Résolu">Résolu</option>
               <option value="Vérifié">Vérifié</option>
             </select>
-            
+
             <select id="severityFilter" class="input-field w-48" onchange="filterNC()">
               <option value="">Toutes les sévérités</option>
               <option value="Critical">Critique</option>

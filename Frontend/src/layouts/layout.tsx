@@ -159,8 +159,8 @@ export function Layout({ children, currentPage }: { children: any, currentPage: 
           // Update user name in header
           const user = Auth.getCurrentUser();
           if (user) {
-            document.getElementById('userName').textContent = user.name || user.email;
-            document.getElementById('dropdownUserName').textContent = user.name || user.email;
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('dropdownUserName').textContent = user.full_name || user.email;
             document.getElementById('dropdownUserEmail').textContent = user.email;
           }
 

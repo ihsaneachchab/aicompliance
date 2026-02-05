@@ -65,7 +65,7 @@ const Utils = {
 };
 
 // Configuration
-const API_URL = 'http://localhost:8000';
+const API_URL = window.VITE_API_URL || 'http://localhost:8000';
 
 // Gestion de l'authentification
 const Auth = {
@@ -371,6 +371,25 @@ Cette procédure s'applique à [À COMPLÉTER : périmètre d'application].
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
   ChatBot.init();
+
+  // Check for email verification success/error on login page
+  if (window.location.pathname === '/login') {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('verified') === 'true') {
+      setTimeout(() => {
+        Utils.showNotification('✅ Email vérifié avec succès ! Vous pouvez maintenant vous connecter.', 'success');
+        // Clean URL
+        window.history.replaceState({}, document.title, '/login');
+      }, 500);
+    }
+    if (urlParams.get('error') === 'invalid_token') {
+      setTimeout(() => {
+        Utils.showNotification('❌ Lien de vérification invalide ou expiré.', 'error');
+        // Clean URL
+        window.history.replaceState({}, document.title, '/login');
+      }, 500);
+    }
+  }
 
   // Vérifier l'authentification pour les pages protégées
   const protectedPages = ['/dashboard', '/chat', '/analyse', '/generation', '/non-conformites', '/bibliotheque'];

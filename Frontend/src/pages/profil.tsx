@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function ProfilPage() {
   return (
@@ -37,17 +37,17 @@ export function ProfilPage() {
             {/* Personal Information */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">Informations personnelles</h2>
-              
+
               <form id="profileForm" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                       Prénom
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="firstName"
-                      class="input-field" 
+                      class="input-field"
                       placeholder="Prénom"
                       value="Marie"
                     />
@@ -57,10 +57,10 @@ export function ProfilPage() {
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                       Nom
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="lastName"
-                      class="input-field" 
+                      class="input-field"
                       placeholder="Nom"
                       value="Dupont"
                     />
@@ -71,10 +71,10 @@ export function ProfilPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Email
                   </label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     id="email"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="email@example.com"
                     value="marie.dupont@entreprise.fr"
                   />
@@ -84,10 +84,10 @@ export function ProfilPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Téléphone
                   </label>
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     id="phone"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="+33 6 XX XX XX XX"
                     value="+33 6 12 34 56 78"
                   />
@@ -97,10 +97,10 @@ export function ProfilPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Poste / Fonction
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="position"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="Responsable Qualité"
                     value="Responsable Qualité"
                   />
@@ -134,16 +134,16 @@ export function ProfilPage() {
             {/* Change Password */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">Changer le mot de passe</h2>
-              
+
               <form id="passwordForm" class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Mot de passe actuel
                   </label>
-                  <input 
-                    type="password" 
+                  <input
+                    type="password"
                     id="currentPassword"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="••••••••"
                   />
                 </div>
@@ -152,10 +152,10 @@ export function ProfilPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Nouveau mot de passe
                   </label>
-                  <input 
-                    type="password" 
+                  <input
+                    type="password"
                     id="newPassword"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="••••••••"
                   />
                 </div>
@@ -164,10 +164,10 @@ export function ProfilPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Confirmer le mot de passe
                   </label>
-                  <input 
-                    type="password" 
+                  <input
+                    type="password"
                     id="confirmPassword"
-                    class="input-field" 
+                    class="input-field"
                     placeholder="••••••••"
                   />
                 </div>
@@ -184,7 +184,7 @@ export function ProfilPage() {
             {/* Preferences */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">Préférences</h2>
-              
+
               <div class="space-y-4">
                 <div class="flex items-center justify-between">
                   <div>

@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function ChatPage() {
   return (
@@ -7,8 +7,8 @@ export function ChatPage() {
         {/* Left sidebar - Conversation history */}
         <div class="w-64 bg-white rounded-xl shadow-card p-4 flex flex-col hidden lg:flex">
           <div class="mb-4">
-            <button 
-              onclick="createNewConversation()" 
+            <button
+              onclick="createNewConversation()"
               class="w-full btn btn-primary"
             >
               <i class="fas fa-plus mr-2"></i>
@@ -72,7 +72,7 @@ export function ChatPage() {
           <div class="border-t border-gray-200 p-4">
             <form id="chatForm" onsubmit="return sendMessage(event)" class="flex items-end space-x-3">
               <div class="flex-1">
-                <textarea 
+                <textarea
                   id="messageInput"
                   rows="1"
                   class="w-full input-field resize-none"
@@ -80,8 +80,8 @@ export function ChatPage() {
                   onkeydown="handleKeyDown(event)"
                 ></textarea>
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 class="btn btn-primary px-6"
                 id="sendButton"
               >
@@ -107,28 +107,28 @@ export function ChatPage() {
             <div class="border-b border-gray-200 pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 4 - Contexte de l'organisme</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Comment identifier le contexte de mon organisme selon ISO 9001 § 4.1 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Contexte de l'organisme (§ 4.1)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Quelles sont les parties intéressées pertinentes selon § 4.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Parties intéressées (§ 4.2)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Comment définir le domaine d\\'application du SMQ § 4.3 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Domaine d'application (§ 4.3)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Quels sont les processus du SMQ requis par § 4.4 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
@@ -142,21 +142,21 @@ export function ChatPage() {
             <div class="border-b border-gray-200 pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 5 - Leadership</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Quel est le rôle de la direction dans le SMQ § 5.1 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Leadership et engagement (§ 5.1)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Comment établir la politique qualité selon § 5.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Politique qualité (§ 5.2)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Comment définir les rôles et responsabilités § 5.3 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
@@ -170,14 +170,14 @@ export function ChatPage() {
             <div class="border-b border-gray-200 pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 7 - Support</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Comment gérer les compétences selon § 7.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Compétences (§ 7.2)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Quelles sont les exigences pour les informations documentées § 7.5 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
@@ -191,14 +191,14 @@ export function ChatPage() {
             <div class="border-b border-gray-200 pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 8 - Réalisation</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Comment maîtriser les processus externalisés § 8.4 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Processus externalisés (§ 8.4)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Quelle est la maîtrise de la production § 8.5 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
@@ -212,14 +212,14 @@ export function ChatPage() {
             <div class="border-b border-gray-200 pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 9 - Évaluation</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Comment réaliser un audit interne selon § 9.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Audit interne (§ 9.2)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Comment conduire la revue de direction § 9.3 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
@@ -233,14 +233,14 @@ export function ChatPage() {
             <div class="pb-4">
               <h4 class="font-semibold text-gray-900 mb-2 text-sm">§ 10 - Amélioration</h4>
               <div class="space-y-2">
-                <button 
+                <button
                   onclick="insertSuggestion('Quelle est la différence entre action corrective et préventive § 10.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >
                   <i class="fas fa-chevron-right text-blue-500 mr-1"></i>
                   Actions correctives (§ 10.2)
                 </button>
-                <button 
+                <button
                   onclick="insertSuggestion('Comment traiter les non-conformités selon § 10.2 ?')"
                   class="w-full text-left p-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-xs transition-colors"
                 >

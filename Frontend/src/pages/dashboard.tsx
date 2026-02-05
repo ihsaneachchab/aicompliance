@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function DashboardPage() {
   return (
@@ -97,7 +97,7 @@ export function DashboardPage() {
             <i class="fas fa-bolt text-yellow-500 mr-2"></i>
             Accès Rapide
           </h2>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a href="/chat" class="group">
               <div class="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer">
@@ -137,7 +137,7 @@ export function DashboardPage() {
             <i class="fas fa-chart-line text-blue-500 mr-2"></i>
             Évolution de la Conformité Globale
           </h2>
-          
+
           <div class="relative h-64 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6">
             {/* Axe Y */}
             <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-500 py-6">
@@ -227,7 +227,7 @@ export function DashboardPage() {
               </span>
               <a href="#" class="text-sm text-blue-600 hover:text-blue-700">Voir tout</a>
             </h2>
-            
+
             <div class="space-y-4">
               <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
                 <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -281,7 +281,7 @@ export function DashboardPage() {
               <i class="fas fa-chart-pie text-purple-500 mr-2"></i>
               Vue d'ensemble Conformité
             </h2>
-            
+
             <div class="flex items-center justify-center mb-6">
               <div class="score-circle score-good">
                 <span>78%</span>

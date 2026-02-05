@@ -349,13 +349,13 @@ export function RegisterPage() {
                         newsletter: data.newsletter
                     });
 
-                    Utils.showNotification('Compte créé ! Vérifiez vos emails (et la console serveur) pour le lien.', 'success');
+                    Utils.showNotification('Compte créé avec succès ! Redirection vers la page de connexion...', 'success');
                     
-                    // Optional: Redirect to login or show instruction
-                     setTimeout(() => {
+                    // Redirect to login after 1.5 seconds
+                    setTimeout(() => {
                         window.location.href = '/login';
-                     }, 3000);
-
+                    }, 1500);
+                    
                 } catch (error) {
                     console.error('Registration Error:', error);
                     Utils.showNotification(error.message || 'Erreur lors de la création du compte', 'error');

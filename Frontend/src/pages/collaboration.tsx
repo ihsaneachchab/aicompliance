@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function CollaborationPage() {
   return (
@@ -17,7 +17,7 @@ export function CollaborationPage() {
             {/* En attente de validation */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">En attente de validation</h2>
-              
+
               <div class="space-y-3">
                 {/* Document 1 */}
                 <div class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer" onclick="openValidationModal('doc1')">
@@ -45,7 +45,7 @@ export function CollaborationPage() {
                       Urgent
                     </span>
                   </div>
-                  
+
                   <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-4">
                       <button class="btn btn-primary py-2 px-4 text-sm" onclick="event.stopPropagation(); approveDocument('doc1')">
@@ -89,7 +89,7 @@ export function CollaborationPage() {
                       Normal
                     </span>
                   </div>
-                  
+
                   <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-4">
                       <button class="btn btn-primary py-2 px-4 text-sm" onclick="event.stopPropagation(); approveDocument('doc2')">
@@ -112,7 +112,7 @@ export function CollaborationPage() {
             {/* Workflow de validation */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">Workflow de validation</h2>
-              
+
               <div class="flex items-center justify-between">
                 {/* Étape 1: Soumission */}
                 <div class="flex flex-col items-center flex-1">
@@ -184,7 +184,7 @@ export function CollaborationPage() {
                   Voir toutes les notifications
                 </button>
               </div>
-              
+
               <div class="space-y-3">
                 {/* Notification 1 */}
                 <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
@@ -233,23 +233,23 @@ export function CollaborationPage() {
                 <i class="fas fa-cog text-gray-600 mr-2"></i>
                 Paramètres de notification
               </h3>
-              
+
               <div class="space-y-3">
                 <label class="flex items-center justify-between cursor-pointer">
                   <span class="text-sm text-gray-700">Documents en attente</span>
                   <input type="checkbox" checked class="form-checkbox h-5 w-5 text-blue-600 rounded" />
                 </label>
-                
+
                 <label class="flex items-center justify-between cursor-pointer">
                   <span class="text-sm text-gray-700">Nouveaux commentaires</span>
                   <input type="checkbox" checked class="form-checkbox h-5 w-5 text-blue-600 rounded" />
                 </label>
-                
+
                 <label class="flex items-center justify-between cursor-pointer">
                   <span class="text-sm text-gray-700">Approbations</span>
                   <input type="checkbox" checked class="form-checkbox h-5 w-5 text-blue-600 rounded" />
                 </label>
-                
+
                 <label class="flex items-center justify-between cursor-pointer">
                   <span class="text-sm text-gray-700">Rappels d'échéance</span>
                   <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded" />
@@ -260,7 +260,7 @@ export function CollaborationPage() {
             {/* Statistiques */}
             <div class="card">
               <h3 class="font-bold text-gray-900 mb-4">Statistiques</h3>
-              
+
               <div class="space-y-3">
                 <div class="flex items-center justify-between pb-3 border-b border-gray-200">
                   <span class="text-sm text-gray-600">Documents validés</span>

@@ -6,7 +6,7 @@ import { renderer } from './renderer'
 // Importer les composants de page
 import { HomePage } from './pages/home'
 import { ServiceSelectionPage } from './pages/service-selection'
-import { LoginPage } from './pages/login'
+import { LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/register'
 import { DashboardPage } from './pages/dashboard'
 import { ChatPage } from './pages/chat'
@@ -22,7 +22,7 @@ const app = new Hono()
 
 // Middleware
 app.use('/api/*', cors())
-app.use('/static/*', serveStatic({ root: './' }))
+app.use('/static/*', serveStatic({ root: './public', manifest: './public/manifest.json' }))
 app.use(renderer)
 
 // Routes des pages
@@ -86,7 +86,7 @@ app.get('/profil', (c) => {
 app.post('/api/chat/send', async (c) => {
   try {
     const { message } = await c.req.json()
-    
+
     // Simulation de réponse (en production, appeler GPT-4, Claude, etc.)
     const response = {
       id: Date.now().toString(),
@@ -94,7 +94,7 @@ app.post('/api/chat/send', async (c) => {
       content: `Réponse du bot à : "${message}"`,
       timestamp: new Date().toISOString()
     }
-    
+
     return c.json(response)
   } catch (error) {
     return c.json({ error: 'Erreur lors de l\'envoi du message' }, 500)
@@ -106,7 +106,7 @@ app.post('/api/analyse/upload', async (c) => {
   try {
     // En production, traiter le fichier uploadé
     const body = await c.req.parseBody()
-    
+
     return c.json({
       success: true,
       message: 'Document reçu pour analyse',
@@ -121,7 +121,7 @@ app.post('/api/analyse/upload', async (c) => {
 app.post('/api/generation/generate', async (c) => {
   try {
     const params = await c.req.json()
-    
+
     // En production, générer le document via IA
     const document = {
       id: Date.now().toString(),
@@ -129,7 +129,7 @@ app.post('/api/generation/generate', async (c) => {
       content: 'Document généré...',
       createdAt: new Date().toISOString()
     }
-    
+
     return c.json(document)
   } catch (error) {
     return c.json({ error: 'Erreur lors de la génération' }, 500)

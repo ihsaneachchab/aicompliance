@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function AnalysePage() {
   return (
@@ -13,7 +13,7 @@ export function AnalysePage() {
         {/* Analyses Récentes Section */}
         <div class="card">
           <h2 class="text-xl font-bold text-gray-900 mb-4">Analyses Récentes</h2>
-          
+
           <div class="space-y-3 mb-6">
             {/* Recent Analysis 1 */}
             <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
@@ -23,7 +23,7 @@ export function AnalysePage() {
                   <div class="font-medium text-gray-900">Manuel Qualité v3.2</div>
                   <div class="text-sm text-gray-600">
                     <i class="far fa-clock mr-1"></i>
-                    14/01/2025 · 
+                    14/01/2025 ·
                     <i class="fas fa-list-check ml-2 mr-1"></i>
                     2 points à corriger
                   </div>
@@ -54,7 +54,7 @@ export function AnalysePage() {
                   <div class="font-medium text-gray-900">Procédure Achats</div>
                   <div class="text-sm text-gray-600">
                     <i class="far fa-clock mr-1"></i>
-                    14/01/2025 · 
+                    14/01/2025 ·
                     <i class="fas fa-list-check ml-2 mr-1"></i>
                     8 points à corriger
                   </div>
@@ -85,7 +85,7 @@ export function AnalysePage() {
                   <div class="font-medium text-gray-900">Fiche de Poste Directeur</div>
                   <div class="text-sm text-gray-600">
                     <i class="far fa-clock mr-1"></i>
-                    13/01/2025 · 
+                    13/01/2025 ·
                     <i class="fas fa-list-check ml-2 mr-1"></i>
                     15 points à corriger
                   </div>
@@ -143,8 +143,8 @@ export function AnalysePage() {
             {/* Upload area */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">1. Télécharger le document</h2>
-              
-              <div 
+
+              <div
                 id="dropZone"
                 class="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer"
                 ondragover="event.preventDefault(); event.currentTarget.classList.add('border-blue-500', 'bg-blue-50')"
@@ -158,11 +158,11 @@ export function AnalysePage() {
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Glissez-déposez votre document</h3>
                 <p class="text-sm text-gray-600 mb-4">ou cliquez pour parcourir</p>
                 <p class="text-xs text-gray-500">PDF, Word, Excel • Max 10 MB • Max 50 pages</p>
-                
-                <input 
-                  type="file" 
-                  id="fileInput" 
-                  class="hidden" 
+
+                <input
+                  type="file"
+                  id="fileInput"
+                  class="hidden"
                   accept=".pdf,.doc,.docx,.xls,.xlsx"
                   onchange="handleFileSelect(event)"
                 />
@@ -189,7 +189,7 @@ export function AnalysePage() {
             {/* Analysis parameters */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">2. Paramètres d'analyse</h2>
-              
+
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -224,16 +224,16 @@ export function AnalysePage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Référence du document (optionnel)
                   </label>
-                  <input 
-                    type="text" 
-                    id="docReference" 
-                    class="input-field" 
+                  <input
+                    type="text"
+                    id="docReference"
+                    class="input-field"
                     placeholder="Ex: PROC-ACH-001"
                   />
                 </div>
 
-                <button 
-                  onclick="startAnalysis()" 
+                <button
+                  onclick="startAnalysis()"
                   class="w-full btn btn-primary py-3 text-base font-semibold"
                   id="analyzeButton"
                 >
@@ -246,7 +246,7 @@ export function AnalysePage() {
             {/* Analysis results */}
             <div id="analysisResults" class="hidden card">
               <h2 class="text-xl font-bold text-gray-900 mb-6">Résultats de l'analyse</h2>
-              
+
               {/* Score */}
               <div class="flex items-center justify-between mb-6 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl">
                 <div>

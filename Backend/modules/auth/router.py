@@ -1,7 +1,9 @@
 from datetime import timedelta
 from typing import Annotated
+from urllib.parse import unquote
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.responses import RedirectResponse
 from jose import JWTError, jwt
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
@@ -9,7 +11,7 @@ from core.database import get_database
 from core.config import settings
 from core.security import create_access_token
 from .models import Token, UserCreate, UserResponse, TokenData
-from .service import create_user, authenticate_user, get_user_by_username, verify_user_email
+from .service import create_user, authenticate_user, get_user_by_username
 
 router = APIRouter(tags=["Authentication"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
@@ -68,18 +70,87 @@ async def login_for_access_token(
 
 @router.post("/signup", response_model=UserResponse)
 async def register_user(user: UserCreate, db: AsyncIOMotorDatabase = Depends(get_database)):
-    print(f"DEBUG: Received registration request for {user.email}") # Debug
+    print(f"DEBUG: Received registration request for {user.email}")
     new_user = await create_user(db, user)
     new_user["_id"] = str(new_user["_id"])
     return new_user
 
-@router.get("/verify/{token}")
-async def verify_email(token: str, db: AsyncIOMotorDatabase = Depends(get_database)):
-    success = await verify_user_email(db, token)
-    if not success:
-        raise HTTPException(status_code=400, detail="Invalid token")
-    return {"message": "Email verified successfully"}
+# @router.get("/verify/{token}")
+# async def verify_email(token: str, db: AsyncIOMotorDatabase = Depends(get_database)):
+#     """
+#     Verify user email with the token from the verification link.
+#     Redirects to login page with success or error parameters.
+#     """
+#     print(f"DEBUG ROUTE: Received token parameter: '{token}'")
+#     print(f"DEBUG ROUTE: Token length: {len(token)}")
+    
+#     # Decode URL-encoded characters if any
+#     decoded_token = unquote(token)
+#     print(f"DEBUG ROUTE: Decoded token: '{decoded_token}'")
+    
+#     # Strip any whitespace
+#     clean_token = decoded_token.strip()
+#     print(f"DEBUG ROUTE: Clean token: '{clean_token}'")
+    
+#     try:
+#         success = await verify_user_email(db, clean_token)
+        
+#         if not success:
+#             print("DEBUG ROUTE: Verification failed, redirecting with error")
+#             return RedirectResponse(
+#                 url="http://localhost:5173/login?verified=false&error=invalid_token",
+#                 status_code=303
+#             )
+        
+#         print("DEBUG ROUTE: Verification successful, redirecting with success")
+#         return RedirectResponse(
+#             url="http://localhost:5173/login?verified=true",
+#             status_code=303
+#         )
+    
+#     except Exception as e:
+#         print(f"DEBUG ROUTE: Exception during verification: {repr(e)}")
+#         import traceback
+#         traceback.print_exc()
+#         return RedirectResponse(
+#             url="http://localhost:5173/login?verified=false&error=server_error",
+#             status_code=303
+#         )
 
 @router.get("/users/me", response_model=UserResponse)
 async def read_users_me(current_user: Annotated[dict, Depends(get_current_user)]):
     return current_user
+
+# # Optional: Add a debug endpoint to test token verification without redirect
+# @router.get("/debug/verify/{token}")
+# async def debug_verify_email(token: str, db: AsyncIOMotorDatabase = Depends(get_database)):
+#     """Debug endpoint to test token verification without redirect"""
+#     decoded_token = unquote(token)
+#     clean_token = decoded_token.strip()
+    
+#     # Find user with this token
+#     user = await db["users"].find_one({"verification_token": clean_token})
+    
+#     # Get all users with tokens for comparison
+#     all_users_with_tokens = await db["users"].find(
+#         {"verification_token": {"$exists": True, "$ne": None}}
+#     ).to_list(length=10)
+    
+#     return {
+#         "received_token": token,
+#         "decoded_token": decoded_token,
+#         "clean_token": clean_token,
+#         "token_length": len(clean_token),
+#         "user_found": user is not None,
+#         "user_email": user.get("email") if user else None,
+#         "user_is_active": user.get("is_active") if user else None,
+#         "all_tokens_in_db": [
+#             {
+#                 "email": u.get("email"),
+#                 "token": u.get("verification_token"),
+#                 "is_active": u.get("is_active"),
+#                 "matches": u.get("verification_token") == clean_token
+#             }
+#             for u in all_users_with_tokens
+#         ]
+#     }

@@ -1,4 +1,4 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../layouts/layout'
 
 export function GenerationPage() {
   return (
@@ -16,9 +16,9 @@ export function GenerationPage() {
             {/* Template selection */}
             <div class="card">
               <h2 class="text-xl font-bold text-gray-900 mb-4">1. Choisissez un type de document</h2>
-              
+
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div 
+                <div
                   onclick="selectDocumentType('Procédure')"
                   class="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-all group doc-type-card"
                   data-type="Procédure"
@@ -30,7 +30,7 @@ export function GenerationPage() {
                   <p class="text-sm text-gray-600">Document détaillant un processus</p>
                 </div>
 
-                <div 
+                <div
                   onclick="selectDocumentType('Formulaire')"
                   class="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-all group doc-type-card"
                   data-type="Formulaire"
@@ -42,7 +42,7 @@ export function GenerationPage() {
                   <p class="text-sm text-gray-600">Document pour enregistrer des données</p>
                 </div>
 
-                <div 
+                <div
                   onclick="selectDocumentType('Rapport')"
                   class="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-all group doc-type-card"
                   data-type="Rapport"
@@ -59,16 +59,16 @@ export function GenerationPage() {
             {/* Generation form */}
             <div class="card" id="generationForm">
               <h2 class="text-xl font-bold text-gray-900 mb-4">2. Paramètres de génération</h2>
-              
+
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Type de document sélectionné
                   </label>
-                  <input 
-                    type="text" 
-                    id="selectedDocType" 
-                    class="input-field bg-gray-50" 
+                  <input
+                    type="text"
+                    id="selectedDocType"
+                    class="input-field bg-gray-50"
                     readonly
                     placeholder="Sélectionnez un type ci-dessus"
                   />
@@ -126,16 +126,16 @@ export function GenerationPage() {
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     Contexte et spécificités (optionnel)
                   </label>
-                  <textarea 
-                    id="context" 
+                  <textarea
+                    id="context"
                     rows="3"
                     class="input-field resize-none"
                     placeholder="Ex: Machines-outils, maintenance planifiée mensuelle, équipe de 5 personnes..."
                   ></textarea>
                 </div>
 
-                <button 
-                  onclick="generateDocument()" 
+                <button
+                  onclick="generateDocument()"
                   class="w-full btn btn-primary py-3 text-base font-semibold"
                   id="generateButton"
                 >
